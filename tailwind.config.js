@@ -11,6 +11,7 @@ module.exports = {
       skyblue: "#29abe2",
       bgpurple: "#64a2ff",
       bgOpacityPointOne: "rgba(0,0,0,0.1)",
+      navPurple: "#3154C2",
     },
   },
   plugins: [],

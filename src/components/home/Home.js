@@ -5,7 +5,10 @@ import homeBg from "../../img/background pictures/bg-purple-shades.svg";
 
 const Home = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-bgpurple">
+    <div
+      name="home"
+      className="flex flex-col justify-center items-center h-screen bg-bgpurple"
+    >
       <div className="background">
         <img
           className="absolute w-full left-0 bottom-0 z-10"

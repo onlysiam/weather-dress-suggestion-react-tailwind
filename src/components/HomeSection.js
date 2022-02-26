@@ -1,4 +1,4 @@
-import About from "./About";
+import About from "./about/About";
 import Home from "./home/Home";
 
 const HomeSection = () => {
