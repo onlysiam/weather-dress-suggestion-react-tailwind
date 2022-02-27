@@ -23,13 +23,15 @@ import Startpage from "./components/Startpage";
 import Navbar from "./components/Navbar";
 import HomeSection from "./components/HomeSection";
 import Dashboard from "./components/Dashboard";
-// import Login from "./components/Login";
+import Login from "./components/Login";
 
 function App() {
   useEffect(() => {
     console.log("mpountin");
   }, []);
   const location = useLocation();
+
+  const [login, setLogin] = useState(false);
 
   const [windowheight, setWindowheght] = useState();
   const [windowwidth, setWindowwidth] = useState();
@@ -111,11 +113,14 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar setLogin={setLogin} />
       <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Startpage />} />
-          <Route path={"home"} element={<HomeSection />}></Route>
+          <Route
+            path={"home"}
+            element={<HomeSection login={login} setLogin={setLogin} />}
+          ></Route>
           <Route path={"dashboard"} element={<Dashboard />} />
         </Routes>
       </AnimatePresence>

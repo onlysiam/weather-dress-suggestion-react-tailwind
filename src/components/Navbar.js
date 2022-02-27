@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 //components
 import Element from "./nav/Element";
 
-const Navbar = () => {
+const Navbar = ({ setLogin }) => {
   const navigate = useNavigate();
   const [navbarScroll, setNavbarScroll] = useState(false);
   useEffect(() => {
@@ -20,8 +20,8 @@ const Navbar = () => {
     <div
       className={
         navbarScroll
-          ? "flex justify-between w-screen px-28 py-3 fixed z-30 bg-navPurple transition duration-150"
-          : "flex justify-between w-screen px-28 py-3 fixed z-30 transition duration-150"
+          ? "flex justify-between w-screen px-28 py-3 fixed z-50 bg-navPurple transition duration-150"
+          : "flex justify-between w-screen px-28 py-3 fixed z-50 transition duration-150"
       }
     >
       <h1
@@ -34,7 +34,12 @@ const Navbar = () => {
         <Element body="Home" target="home" />
         <Element body="About" target="about" />
         <Element body="Contact" target="contact" />
-        <Element body="Login" target="/home/login" url="true" />
+        <Element
+          setLogin={setLogin}
+          body="Login"
+          target="/home/login"
+          url="true"
+        />
       </div>
     </div>
   );

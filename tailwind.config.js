@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       spacing: {
         mbottom: "100%",
+        "65%": "65%",
       },
       fontFamily: {
         goth: ['"Gothic A1"'],
@@ -17,6 +18,7 @@ module.exports = {
         navPurple: "#3154C2",
         btnPurple: "#A091EB",
         inputPurple: "#ffffff30",
+        darkPurple: "#273297",
       },
     },
   },
