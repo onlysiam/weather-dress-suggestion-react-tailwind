@@ -20,10 +20,15 @@ import {
 import { AnimatePresence } from "framer-motion";
 //components
 import Startpage from "./components/Startpage";
-import HomeSection from "./components/HomeSection";
 import Navbar from "./components/Navbar";
+import HomeSection from "./components/HomeSection";
+import Dashboard from "./components/Dashboard";
+// import Login from "./components/Login";
 
 function App() {
+  useEffect(() => {
+    console.log("mpountin");
+  }, []);
   const location = useLocation();
 
   const [windowheight, setWindowheght] = useState();
@@ -88,7 +93,7 @@ function App() {
     setStartpage(true);
     setTimeout(function () {
       setStartpage(false);
-    }, 1600);
+    }, 10000);
 
     if (localStorage.getItem("userID")) {
       setAuthenticated(true);
@@ -106,17 +111,12 @@ function App() {
 
   return (
     <div className="App">
-      {startpage ? (
-        <div className="startpage">
-          <Startpage windowheight={windowheight} />
-        </div>
-      ) : (
-        ""
-      )}
       <Navbar />
-      <AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomeSection />} />
+          <Route path="/" element={<Startpage />} />
+          <Route path={"home"} element={<HomeSection />}></Route>
+          <Route path={"dashboard"} element={<Dashboard />} />
         </Routes>
       </AnimatePresence>
     </div>

@@ -1,6 +1,6 @@
 const Aboutdetails = ({ image, body }) => {
   return (
-    <div className="flex justify-evenly items-center px-4 py-4">
+    <div className="flex justify-evenly items-center pl-4 py-4">
       <div className="w-1/6">
         <img src={image} alt="" />
       </div>

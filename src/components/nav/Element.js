@@ -1,8 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-scroll";
-const Element = ({ body, target }) => {
+const Element = ({ body, target, url }) => {
+  const navigate = useNavigate();
+  const navigateHandler = () => {
+    if (url) navigate(target);
+  };
   return (
     <Link
+      onClick={navigateHandler}
       className="linkNavNotActive"
       activeClass="active"
       to={target}

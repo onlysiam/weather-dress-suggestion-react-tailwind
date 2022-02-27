@@ -1,12 +1,23 @@
+import { Outlet } from "react-router-dom";
+import { motion } from "framer-motion";
 import About from "./about/About";
 import Home from "./home/Home";
+//animations
+import { pageAnimation } from "./Animation";
 
 const HomeSection = () => {
   return (
-    <div className="home">
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      className="home"
+    >
       <Home />
       <About />
-    </div>
+      <Outlet />
+    </motion.div>
   );
 };
 
