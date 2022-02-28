@@ -113,7 +113,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar setLogin={setLogin} />
+      <Navbar login={login} setLogin={setLogin} />
       <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Startpage />} />

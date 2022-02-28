@@ -1,5 +1,5 @@
 //components
-import Button from "./Button";
+import Button from "../buttons/Button";
 //images
 import bg from "../../img/background pictures/citysearchBg.svg";
 import locationImg from "../../img/citysearch page/location.svg";

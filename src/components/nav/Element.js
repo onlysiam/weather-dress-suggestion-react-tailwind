@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-scroll";
-const Element = ({ body, target, url, setLogin }) => {
+const Element = ({ body, target, url, setLogin, login }) => {
   const navigate = useNavigate();
   const navigateHandler = () => {
-    if (url) setLogin(true);
+    if (url) setLogin(!login);
   };
   return (
     <Link

@@ -4,7 +4,7 @@ module.exports = {
     extend: {
       spacing: {
         mbottom: "100%",
-        "65%": "65%",
+        "65%": "29rem",
       },
       fontFamily: {
         goth: ['"Gothic A1"'],
