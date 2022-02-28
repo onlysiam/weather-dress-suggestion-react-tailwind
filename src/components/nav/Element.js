@@ -5,6 +5,7 @@ const Element = ({ body, target, url, setLogin, login }) => {
   const navigate = useNavigate();
   const navigateHandler = () => {
     if (url) setLogin(!login);
+    if (!url) setLogin(false);
   };
   return (
     <Link

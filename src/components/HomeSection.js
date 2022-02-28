@@ -1,11 +1,8 @@
-import { Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
 import About from "./about/About";
 import Home from "./home/Home";
 //animations
-import { AnimatePresence } from "framer-motion";
 import { pageAnimation } from "./Animation";
-import Login from "./Login";
 
 const HomeSection = ({ login, setLogin }) => {
   return (
@@ -28,7 +25,6 @@ const HomeSection = ({ login, setLogin }) => {
         <Home />
         <About />
       </div>
-      <AnimatePresence>{login ? <Login /> : ""}</AnimatePresence>
     </motion.div>
   );
 };
