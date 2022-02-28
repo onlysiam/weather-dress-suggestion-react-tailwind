@@ -2,16 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const slice = createSlice({
   name: "login",
-  initialState: false,
+  initialState: { state: true },
   reducers: {
     loginWindowToggle: (toggleLoginWindow, action) => {
-      toggleLoginWindow = !toggleLoginWindow;
+      toggleLoginWindow.state = !toggleLoginWindow.state;
     },
     loginWindowToggleTrue: (toggleLoginWindow, action) => {
-      toggleLoginWindow = true;
+      toggleLoginWindow.state = true;
     },
     loginWindowToggleFalse: (toggleLoginWindow, action) => {
-      toggleLoginWindow = false;
+      toggleLoginWindow.state = false;
     },
   },
 });

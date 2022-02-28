@@ -1,12 +1,26 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-scroll";
-const Element = ({ body, target, url, setLogin, login }) => {
-  const navigate = useNavigate();
+//redux
+import { useSelector, useDispatch } from "react-redux";
+//reducer
+import {
+  authWindowToggle,
+  authWindowToggleFalse,
+} from "../../store/loaders/authWindow";
+import { signupWindowToggleFalse } from "../../store/loaders/signupWindow";
+import {
+  loginWindowToggleTrue,
+  loginWindowToggleFalse,
+} from "../../store/loaders/loginWindow";
+const Element = ({ body, target, url }) => {
+  const dispatch = useDispatch();
   const navigateHandler = () => {
-    if (url) setLogin(!login);
-    if (!url) setLogin(false);
+    if (url) {
+      dispatch(authWindowToggle());
+    }
+    if (!url) dispatch(authWindowToggleFalse());
   };
+
   return (
     <Link
       onClick={navigateHandler}

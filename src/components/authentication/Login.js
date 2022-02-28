@@ -9,8 +9,22 @@ import { loginPageAnimation } from "../Animation";
 import Button from "../buttons/Button";
 import Input from "../inputs/Input";
 import CheckedInput from "../inputs/CheckedInput";
+//redux
+import { useDispatch } from "react-redux";
+//reducers
+import { alertToggleTrue } from "../../store/alerts/alert";
+import { useEffect, useState } from "react";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const [clicked, setClicked] = useState(false);
+  //useEffect
+  useEffect(() => {}, []);
+  //handlers
+  const logInHandler = (e) => {
+    e.preventDefault();
+    dispatch(alertToggleTrue("success"));
+  };
   return (
     <form
       className="flex w-3/5 h-65% flex-wrap items-center bg-white bg-opacity-20 justify-around backdrop-blur-md shadow-2xl rounded-md px-14 py-14 z-40"
@@ -43,6 +57,7 @@ const Login = () => {
       </div>
       <div className="basis-full mt-2">
         <Button
+          onClick={logInHandler}
           body="Log in"
           mr="mr-0"
           px="px-6"

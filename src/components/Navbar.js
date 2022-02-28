@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 //components
 import Element from "./nav/Element";
 
-const Navbar = ({ login, setLogin }) => {
+const Navbar = () => {
   const navigate = useNavigate();
   const [navbarScroll, setNavbarScroll] = useState(false);
   useEffect(() => {
@@ -34,13 +34,7 @@ const Navbar = ({ login, setLogin }) => {
         <Element body="Home" target="home" />
         <Element body="About" target="about" />
         <Element body="Contact" target="contact" />
-        <Element
-          setLogin={setLogin}
-          login={login}
-          body="Login"
-          target="login"
-          url="true"
-        />
+        <Element body="Login" target="login" url="true" />
       </div>
     </div>
   );

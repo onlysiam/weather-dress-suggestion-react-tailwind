@@ -5,8 +5,10 @@ import { motion } from "framer-motion";
 import { loginPageAnimation } from "./Animation";
 //components
 import Login from "./authentication/Login";
-
+//redux
+import { useSelector, useDispatch } from "react-redux";
 const Authentication = () => {
+  const loginState = useSelector((state) => state.loader.loginWindow.state);
   return (
     <motion.div
       name="login"
@@ -23,7 +25,7 @@ const Authentication = () => {
           alt=""
         />
       </div>
-      <Login />
+      {loginState ? <Login /> : ""}
     </motion.div>
   );
 };

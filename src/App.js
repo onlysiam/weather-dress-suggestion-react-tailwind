@@ -10,24 +10,27 @@ import Navbar from "./components/Navbar";
 import HomeSection from "./components/HomeSection";
 import Dashboard from "./components/Dashboard";
 import Authentication from "./components/Authentication";
-
+import Alerts from "./components/alerts/Alerts";
+//redux
+import { useSelector, useDispatch } from "react-redux";
 function App() {
   const location = useLocation();
 
-  const [login, setLogin] = useState(false);
+  const authenticationWindowState = useSelector(
+    (state) => state.loader.authWindow.state
+  );
 
   return (
     <div className="App">
-      <Navbar login={login} setLogin={setLogin} />
-
-      <AnimatePresence>{login ? <Authentication /> : ""}</AnimatePresence>
+      <Navbar />
+      <Alerts />
+      <AnimatePresence>
+        {authenticationWindowState ? <Authentication /> : ""}
+      </AnimatePresence>
       <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Startpage />} />
-          <Route
-            path={"home"}
-            element={<HomeSection login={login} setLogin={setLogin} />}
-          ></Route>
+          <Route path={"home"} element={<HomeSection />}></Route>
           <Route path={"dashboard"} element={<Dashboard />} />
         </Routes>
       </AnimatePresence>

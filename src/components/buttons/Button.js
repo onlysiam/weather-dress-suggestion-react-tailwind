@@ -10,6 +10,7 @@ const Button = ({
   font,
   hoverText,
   hoverBg,
+  onClick,
 }) => {
   w = w ? w + " " : " ";
   h = h ? h + " " : "h-11 ";
@@ -20,8 +21,10 @@ const Button = ({
   font = font ? font + " " : " ";
   hoverText = hoverText ? "hover:" + hoverText + " " : "hover:text-btnPurple ";
   hoverBg = hoverBg ? "hover:" + hoverBg + " " : "hover:bg-white ";
+
   return (
     <button
+      onClick={(e) => onClick(e)}
       className={
         px +
         py +

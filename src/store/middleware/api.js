@@ -1,5 +1,5 @@
 import axios from "axios";
-import { authAlertToggleTrue } from "../authAlerts";
+import { alertToggleTrue } from "../alerts/alert";
 import * as actions from "../api";
 const api =
   ({ dispatch }) =>
@@ -23,11 +23,11 @@ const api =
       if (onSuccess && response.data) {
         dispatch({ type: onSuccess, payload: response.data });
         if (onSuccess === "users/userAdded") {
-          dispatch({ type: authAlertToggleTrue.type, payload: "success" });
+          dispatch({ type: alertToggleTrue.type, payload: "success" });
         }
       }
       if (onSuccess && !response.data) {
-        dispatch({ type: authAlertToggleTrue.type, payload: "error" });
+        dispatch({ type: alertToggleTrue.type, payload: "error" });
         dispatch({ type: onError, payload: "no user" });
       }
     } catch (error) {
