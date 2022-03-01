@@ -6,9 +6,7 @@ import passIcon from "../../img/login props/pass.svg";
 import { motion } from "framer-motion";
 import { loginSignupPageAnimation } from "../Animation";
 //components
-import Button from "../buttons/Button";
-import Input from "../inputs/Input";
-import CheckedInput from "../inputs/CheckedInput";
+import { Button, Input, CheckedInput } from "../formComponents/FormComponents";
 //redux
 import { useDispatch } from "react-redux";
 //reducers

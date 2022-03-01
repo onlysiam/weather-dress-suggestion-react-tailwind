@@ -1,10 +1,9 @@
 //components
-import Button from "../buttons/Button";
+import { Button, SelectButton } from "../formComponents/FormComponents";
 //images
 import bg from "../../img/background pictures/citysearchBg.svg";
 import locationImg from "../../img/citysearch page/location.svg";
 import arrow from "../../img/citysearch page/arrow.svg";
-import SelectButton from "../buttons/SelectButton";
 const Citysearch = () => {
   return (
     <div className="flex flex-col justify-evenly items-start w-screen px-60">

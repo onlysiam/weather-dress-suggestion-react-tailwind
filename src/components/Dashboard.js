@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { pageAnimation } from "./Animation";
 //components
 import Citysearch from "./dashboard/Citysearch";
+import Weather from "./dashboard/Weather";
 const Dashboard = () => {
   return (
     <motion.div
@@ -13,7 +14,7 @@ const Dashboard = () => {
       className="home"
       className="flex justify-center items-center w-screen h-screen"
     >
-      <Citysearch />
+      <Weather />
     </motion.div>
   );
 };
