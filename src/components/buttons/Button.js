@@ -19,8 +19,8 @@ const Button = ({
   mr = mr ? mr + " " : "mr-8 ";
   bg = bg ? bg + " " : "bg-btnPurple ";
   font = font ? font + " " : " ";
-  hoverText = hoverText ? "hover:" + hoverText + " " : "hover:text-btnPurple ";
-  hoverBg = hoverBg ? "hover:" + hoverBg + " " : "hover:bg-white ";
+  hoverText = hoverText ? hoverText + " " : "hover:text-btnPurple ";
+  hoverBg = hoverBg ? hoverBg + " " : "hover:bg-white ";
 
   return (
     <button

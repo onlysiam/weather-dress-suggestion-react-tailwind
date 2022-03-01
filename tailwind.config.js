@@ -5,6 +5,7 @@ module.exports = {
       spacing: {
         mbottom: "100%",
         "65%": "29rem",
+        100: "35rem",
         "ml50%": "50%",
       },
       fontFamily: {

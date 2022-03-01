@@ -17,56 +17,76 @@ import { loginWindowToggle } from "../../store/loaders/loginWindow";
 import { signupWindowToggle } from "../../store/loaders/signupWindow";
 import { useEffect, useState } from "react";
 
-const Login = () => {
+const Signup = () => {
   const dispatch = useDispatch();
 
   //handlers
-  const logInHandler = (e) => {
+  const signupHandler = (e) => {
     e.preventDefault();
     dispatch(alertToggleTrue("success"));
   };
-
-  const signupWindowHandler = () => {
+  const loginWindowHandler = () => {
     dispatch(loginWindowToggle());
     dispatch(signupWindowToggle());
   };
   return (
     <motion.form
-      className="flex w-3/5 h-65% flex-wrap items-center bg-white bg-opacity-20 justify-around backdrop-blur-md shadow-2xl rounded-md px-14 py-14 z-40"
+      className="flex w-3/4 h-100 flex-wrap items-center bg-white bg-opacity-20 justify-around backdrop-blur-md shadow-2xl rounded-md px-14 py-10 z-40"
+      action=""
       variants={loginSignupPageAnimation}
       initial="hidden"
       animate="show"
       exit="exit"
     >
       <h1 className="basis-full font-ubuntu text-3xl text-gray-700 font-medium overflow-hidden z-30">
-        Log In
+        Create An Account
       </h1>
-      <div className="flex flex-wrap justify-center items-start mt-6">
-        <div className="basis-full justify-center items-start">
+      <div className="flex flex-wrap justify-center items-start mt-6 mb-6">
+        <h1 className="basis-full font-ubuntu text-xl text-gray-700 font-medium overflow-hidden z-30 mb-6">
+          Login Credentials
+        </h1>
+        <div className="flex basis-full justify-center items-start">
           <Input
-            image={userIcon}
-            placeholder="User name"
+            placeholder="Username"
             basis="basis-full"
-            pl="pl-6"
+            pl="pl-0"
+            mr="mr-6"
           />
-        </div>
-        <div className="basis-full justify-center items-start mt-8">
           <Input
-            type="password"
-            placeholder="Password"
-            image={passIcon}
+            type="text"
+            placeholder="Password of 8 characters"
             basis="basis-full"
-            pl="pl-6"
+            pl="pl-0"
           />
-        </div>
-        <div className="flex basis-full justify-start items-center mt-6 ">
-          <CheckedInput body="Remember me" />
         </div>
       </div>
-      <div className="basis-full mt-2">
+
+      <div className="flex flex-wrap justify-center items-start">
+        <h1 className="basis-full font-ubuntu text-xl text-gray-700 font-medium overflow-hidden z-30 mb-6">
+          User Info
+        </h1>
+        <div className="flex basis-full justify-center items-start">
+          <Input
+            placeholder="First Name"
+            basis="basis-full"
+            pl="pl-0"
+            mr="mr-6"
+          />
+          <Input placeholder="Last Name" basis="basis-full" pl="pl-0" />
+        </div>
+        <div className="basis-full justify-center items-start mt-6">
+          <Input
+            type="text"
+            placeholder="Enter a valid email address"
+            basis="basis-full"
+            pl="pl-0"
+          />
+        </div>
+      </div>
+      <div className="basis-full mt-6">
         <Button
-          onClick={logInHandler}
-          body="Log in"
+          onClick={signupHandler}
+          body="Sign up"
           mr="mr-0"
           px="px-6"
           py="py-2"
@@ -78,19 +98,16 @@ const Login = () => {
         />
       </div>
       <div className="flex flex-col basis-full mt-2">
-        <Link className="text-gray-700 font-medium font-ubuntu" to="reset">
-          Forgot Password?
-        </Link>
         <Link
-          onClick={signupWindowHandler}
+          onClick={loginWindowHandler}
           className="text-gray-700 font-medium font-ubuntu"
           to="#"
         >
-          Create an account{" "}
+          Already have an accound? Login.
         </Link>
       </div>
     </motion.form>
   );
 };
 
-export default Login;
+export default Signup;

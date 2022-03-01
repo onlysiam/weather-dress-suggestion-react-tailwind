@@ -16,6 +16,8 @@ const Element = ({ body, target, url }) => {
   const dispatch = useDispatch();
   const navigateHandler = () => {
     if (url) {
+      dispatch(signupWindowToggleFalse());
+      dispatch(loginWindowToggleTrue());
       dispatch(authWindowToggle());
     }
     if (!url) dispatch(authWindowToggleFalse());
