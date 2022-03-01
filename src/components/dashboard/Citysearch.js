@@ -4,7 +4,7 @@ import Button from "../buttons/Button";
 import bg from "../../img/background pictures/citysearchBg.svg";
 import locationImg from "../../img/citysearch page/location.svg";
 import arrow from "../../img/citysearch page/arrow.svg";
-import SelectButton from "./SelectButton";
+import SelectButton from "../buttons/SelectButton";
 const Citysearch = () => {
   return (
     <div className="flex flex-col justify-evenly items-start w-screen px-60">
@@ -21,7 +21,7 @@ const Citysearch = () => {
         </div>
         <div className="flex mt-5 gap-3 w-full justify-bwtween items-start z-20">
           <input
-            className="basis-11/12 border-2 h-11 border-purple-600 outline-none px-4 text-white rounded bg-inputPurple"
+            className="basis-11/12 border-2 h-11 border-purple-600 outline-none px-4 text-white rounded bg-inputPurple focus:border-bgpurple duration-150"
             type="text"
             placeholder="City/Place"
           />

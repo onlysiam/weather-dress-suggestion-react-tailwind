@@ -37,7 +37,7 @@ const Signup = () => {
   };
   return (
     <motion.form
-      className="flex w-3/4 h-100 flex-wrap items-center bg-white bg-opacity-20 justify-around backdrop-blur-md shadow-2xl rounded-md px-14 py-10 z-40"
+      className="flex w-3/5 h-100 flex-wrap items-center bg-white bg-opacity-30 justify-around backdrop-blur-md shadow-2xl rounded-md px-14 py-10 z-40"
       action=""
       variants={loginSignupPageAnimation}
       initial="hidden"
@@ -106,7 +106,7 @@ const Signup = () => {
       <div className="flex flex-col basis-full mt-2">
         <Link
           onClick={loginWindowHandler}
-          className="text-gray-700 font-medium font-ubuntu"
+          className="text-gray-700 font-medium font-ubuntu hover:text-bgpurple duration-150"
           to="#"
         >
           Already have an accound? Login.

@@ -34,7 +34,7 @@ const Login = () => {
   };
   return (
     <motion.form
-      className="flex w-3/5 h-65% flex-wrap items-center bg-white bg-opacity-20 justify-around backdrop-blur-md shadow-2xl rounded-md px-14 py-14 z-40"
+      className="flex w-3/5 h-65% flex-wrap items-center bg-white bg-opacity-30 justify-around backdrop-blur-md shadow-2xl rounded-md px-14 py-14 z-40"
       variants={loginSignupPageAnimation}
       initial="hidden"
       animate="show"
@@ -80,12 +80,15 @@ const Login = () => {
         />
       </div>
       <div className="flex flex-col basis-full mt-2">
-        <Link className="text-gray-700 font-medium font-ubuntu" to="reset">
+        <Link
+          className="text-gray-700 font-medium font-ubuntu hover:text-bgpurple duration-150"
+          to="reset"
+        >
           Forgot Password?
         </Link>
         <Link
           onClick={signupWindowHandler}
-          className="text-gray-700 font-medium font-ubuntu"
+          className="text-gray-700 font-medium font-ubuntu hover:text-bgpurple duration-150"
           to="#"
         >
           Create an account{" "}
