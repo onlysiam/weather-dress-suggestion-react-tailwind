@@ -1,5 +1,6 @@
 import axios from "axios";
 import { alertToggleTrue } from "../alerts/alert";
+import { loadWeatherData } from "../weatherdata";
 import * as actions from "../api";
 const api =
   ({ dispatch }) =>
@@ -13,8 +14,8 @@ const api =
     next(action);
     try {
       const response = await axios.request({
-        // baseURL: "http://localhost:3001/api",
-        baseURL: "https://cgpa101.onlysiam.com/api",
+        baseURL: "http://localhost:3001/api",
+        // baseURL: "https://cgpa101.onlysiam.com/api",
         url,
         method,
         data,
@@ -24,6 +25,11 @@ const api =
         dispatch({ type: onSuccess, payload: response.data });
         if (onSuccess === "users/userAdded") {
           dispatch({ type: alertToggleTrue.type, payload: "success" });
+        }
+        if (onSuccess === "weather data/lanLotAdded") {
+          const lanlot =
+            response.data.coord.lat + "," + response.data.coord.lon;
+          dispatch(loadWeatherData(lanlot));
         }
       }
       if (onSuccess && !response.data) {

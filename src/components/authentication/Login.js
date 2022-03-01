@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Axios from "axios";
 //image
 import userIcon from "../../img/login props/user.svg";
 import passIcon from "../../img/login props/pass.svg";
@@ -14,6 +15,7 @@ import { alertToggleTrue } from "../../store/alerts/alert";
 import { loginWindowToggle } from "../../store/loaders/loginWindow";
 import { signupWindowToggle } from "../../store/loaders/signupWindow";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -21,6 +23,18 @@ const Login = () => {
   //handlers
   const logInHandler = (e) => {
     e.preventDefault();
+
+    Axios.get("http://localhost:3001/currentweather").then((response, err) => {
+      console.log("yo");
+      if (response.data.message) {
+        console.log("success");
+        console.log(response.data.message);
+      } else {
+        console.log(response.data);
+        console.log(err);
+      }
+    });
+
     dispatch(
       alertToggleTrue({ type: "success", message: "Successfully Logged In." })
     );

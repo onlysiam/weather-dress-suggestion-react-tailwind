@@ -37,6 +37,7 @@ export const Button = ({
         bg +
         hoverText +
         hoverBg +
+        text +
         "flex overflow-hidden cursor-pointerfont-bold rounded outline-none duration-500 "
       }
     >

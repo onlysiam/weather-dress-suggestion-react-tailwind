@@ -1,3 +1,6 @@
+export const weatehrDataUrl = "/weatherdata";
+export const lanLotUrl = "/lanlot";
+
 export const courseUrl = "/courses";
 export const deleteCourseUrl = "/courseremoved";
 export const addCourseUrl = "/addcourses";

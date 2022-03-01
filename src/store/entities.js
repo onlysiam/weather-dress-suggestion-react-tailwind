@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import usersReducer from "./users";
+import weatherdataReducer from "./weatherdata";
 import authReducer from "./auth";
 
 const appReducer = combineReducers({
   users: usersReducer,
   userAuthentication: authReducer,
+  weatherData: weatherdataReducer,
 });
 
 const rootReducer = (state, action) => {

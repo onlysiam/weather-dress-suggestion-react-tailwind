@@ -5,7 +5,14 @@ import Forecast from "./Forecast";
 import searchIcon from "../../img/dashboard/search glass.svg";
 
 import Place from "./Place";
+import { useDispatch } from "react-redux";
+import { loadWeatherData, loadCityLanLot } from "../../store/weatherdata";
 const Weather = () => {
+  const dispatch = useDispatch();
+  const getWeatherDataHandler = () => {
+    // dispatch(loadWeatherData("37.8267,-122.4233"));
+    dispatch(loadCityLanLot("kuril,BD"));
+  };
   return (
     <div className="flex justify-center items-center w-screen h-screen bg-bgpurple">
       <div className="flex flex-col justify-center items-center h-4/5 w-30p bg-bluishBlack rounded-l-xl">
@@ -17,7 +24,12 @@ const Weather = () => {
         <div className="flex flex-col gap-6 justify-center items-start">
           <div className="flex gap-2">
             <div className="flex justify-center items-center bg-white rounded pl-2">
-              <img className="h-6 cursor-pointer" src={searchIcon} alt="" />
+              <img
+                onClick={getWeatherDataHandler}
+                className="h-6 cursor-pointer"
+                src={searchIcon}
+                alt=""
+              />
               <input
                 className="h-8 pl-2 rounded outline-none text-black font-goth placeholder-gray-600 focus:border-bgpurple duration-150"
                 type="text"
