@@ -23,7 +23,13 @@ const Signup = () => {
   //handlers
   const signupHandler = (e) => {
     e.preventDefault();
-    dispatch(alertToggleTrue("success"));
+
+    dispatch(
+      alertToggleTrue({
+        type: "success",
+        message: "Account Created Successfully.",
+      })
+    );
   };
   const loginWindowHandler = () => {
     dispatch(loginWindowToggle());

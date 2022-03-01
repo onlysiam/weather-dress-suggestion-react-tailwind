@@ -33,8 +33,7 @@ const Alerts = () => {
             variant="filled"
             severity={alertType || "error"}
           >
-            {alertType === "success" ? "Successfully Logged In." : ""}
-            {alertType === "error" ? "Incorrect Username/Password." : ""}
+            {alert.message}
           </Alert>
         </Grow>
       </Box>

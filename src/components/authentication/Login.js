@@ -23,7 +23,9 @@ const Login = () => {
   //handlers
   const logInHandler = (e) => {
     e.preventDefault();
-    dispatch(alertToggleTrue("success"));
+    dispatch(
+      alertToggleTrue({ type: "success", message: "Successfully Logged In." })
+    );
   };
 
   const signupWindowHandler = () => {
