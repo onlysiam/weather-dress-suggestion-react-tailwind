@@ -19,6 +19,7 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-scroll": "^1.8.5",
+    "react-skycons": "^0.8.8",
     "react-skycons-extended": "^1.0.2",
     "redux": "^4.1.2",
     "styled-components": "^5.3.3",

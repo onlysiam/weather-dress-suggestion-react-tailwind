@@ -1,14 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
-import { weatehrDataUrl, lanLotUrl } from "./urls";
+import { weatehrDataUrl } from "./urls";
+import {
+  unixToDatetime,
+  todaysDate,
+  unixToWeekday,
+  farenheitToCelcius,
+} from "./functions";
 
 const slice = createSlice({
   name: "weather data",
   initialState: {
-    list: {
-      lanLot: [],
-      weatherdata: [],
+    currently: {
+      lat: "",
+      lon: "",
+      date: "",
+      city: "",
+      cityImage: "",
+      temperature: "",
+      feelsLike: "",
+      sunset: "",
+      icon: "",
     },
+    hourly: [],
+    weekly: [],
     loading: false,
     lastFetch: null,
   },
@@ -16,13 +31,54 @@ const slice = createSlice({
     dataRequested: (data, action) => {
       data.loading = true;
     },
-    lanLotAdded: (data, action) => {
-      data.list.lanLot.push(action.payload.coord);
-      data.loading = true;
-    },
     dataAdded: (data, action) => {
-      data.list.weatherdata.push(action.payload);
-      data.loading = true;
+      data.currently.lat = action.payload.openweatherData.coord.lat;
+      data.currently.lon = action.payload.openweatherData.coord.lon;
+      data.currently.date = todaysDate();
+      data.currently.city =
+        action.payload.openweatherData.name +
+        ", " +
+        action.payload.openweatherData.sys.country;
+      data.currently.cityImage = action.payload.placeImage[0].webformatURL;
+      data.currently.temperature = parseInt(
+        action.payload.openweatherData.main.temp
+      );
+      data.currently.feelsLike = parseInt(
+        action.payload.openweatherData.main.feels_like
+      );
+      data.currently.sunset = unixToDatetime(
+        action.payload.openweatherData.sys.sunset
+      );
+      data.currently.icon = action.payload.darkskyData.currently.icon
+        .replaceAll("-", "_")
+        .toUpperCase();
+
+      //hourly forecast
+      action.payload.darkskyData.hourly.data.map((hour) => {
+        data.hourly.push({
+          time: unixToDatetime(hour.time),
+          summary: hour.summary,
+          rain: hour.precipProbability,
+          wind: hour.windSpeed,
+          icon: hour.icon.replaceAll("-", "_").toUpperCase(),
+          temp: parseInt(farenheitToCelcius(hour.temperature)),
+        });
+      });
+      //weekly forecast
+      action.payload.darkskyData.daily.data.map((daily) => {
+        data.weekly.push({
+          time: unixToWeekday(daily.time),
+          summary: daily.summary,
+          moonphase: daily.moonPhase,
+          rain: daily.precipProbability,
+          wind: daily.windSpeed,
+          icon: daily.icon.replaceAll("-", "_").toUpperCase(),
+          maxTemp: parseInt(farenheitToCelcius(daily.temperatureMax)),
+          minTemp: parseInt(farenheitToCelcius(daily.temperatureMin)),
+        });
+      });
+
+      data.loading = false;
     },
 
     dataRequestFailed: (data, action) => {
@@ -31,8 +87,7 @@ const slice = createSlice({
   },
 });
 
-export const { dataAdded, lanLotAdded, dataRequested, dataRequestFailed } =
-  slice.actions;
+export const { dataAdded, dataRequested, dataRequestFailed } = slice.actions;
 export default slice.reducer;
 
 export const loadWeatherData = (latlon) =>
@@ -41,14 +96,5 @@ export const loadWeatherData = (latlon) =>
     method: "get",
     onStart: dataRequested.type,
     onSuccess: dataAdded.type,
-    onError: dataRequestFailed.type,
-  });
-
-export const loadCityLanLot = (city) =>
-  apiCallBegan({
-    url: lanLotUrl + "/" + city,
-    method: "get",
-    onStart: dataRequested.type,
-    onSuccess: lanLotAdded.type,
     onError: dataRequestFailed.type,
   });

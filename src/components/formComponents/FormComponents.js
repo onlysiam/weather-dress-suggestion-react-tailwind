@@ -12,6 +12,7 @@ export const Button = ({
   hoverText,
   hoverBg,
   onClick,
+  active,
 }) => {
   w = w ? w + " " : " ";
   h = h ? h + " " : "h-11 ";
@@ -23,6 +24,7 @@ export const Button = ({
   text = text ? text + " " : "text-white ";
   hoverText = hoverText ? hoverText + " " : "hover:text-bgpurple ";
   hoverBg = hoverBg ? hoverBg + " " : "hover:bg-white ";
+  active = active ? active + " " : "";
 
   return (
     <button
@@ -38,7 +40,8 @@ export const Button = ({
         hoverText +
         hoverBg +
         text +
-        "flex overflow-hidden cursor-pointerfont-bold rounded outline-none duration-500 "
+        active +
+        "flex overflow-hidden cursor-pointer font-bold rounded outline-none duration-500"
       }
     >
       {image ? <img className="h-6 pr-2" src={image} alt="" /> : ""}
@@ -48,6 +51,8 @@ export const Button = ({
 };
 
 export const SelectButton = ({
+  value,
+  onChange,
   bg,
   text,
   px,
@@ -69,6 +74,8 @@ export const SelectButton = ({
   hoverBg = hoverBg ? hoverBg + " " : "hover:bg-white ";
   return (
     <select
+      onChange={(e) => onChange(e)}
+      value={value}
       className={
         bg +
         text +
@@ -83,9 +90,7 @@ export const SelectButton = ({
       }
       aria-label="Default select example"
     >
-      <option selected value="BD">
-        Bangladesh
-      </option>
+      <option value="BD">Bangladesh</option>
       <option value="IND">India</option>
       <option value="US">USA</option>
       <option value="UK">UK</option>

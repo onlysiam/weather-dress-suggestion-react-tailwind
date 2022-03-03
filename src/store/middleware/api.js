@@ -26,11 +26,6 @@ const api =
         if (onSuccess === "users/userAdded") {
           dispatch({ type: alertToggleTrue.type, payload: "success" });
         }
-        if (onSuccess === "weather data/lanLotAdded") {
-          const lanlot =
-            response.data.coord.lat + "," + response.data.coord.lon;
-          dispatch(loadWeatherData(lanlot));
-        }
       }
       if (onSuccess && !response.data) {
         dispatch({ type: alertToggleTrue.type, payload: "error" });

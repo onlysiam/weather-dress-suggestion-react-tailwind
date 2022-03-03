@@ -20,8 +20,8 @@ const Navbar = () => {
     <div
       className={
         navbarScroll
-          ? "flex justify-between w-screen px-28 py-3 fixed z-50 bg-navPurple transition duration-150"
-          : "flex justify-between w-screen px-28 py-3 fixed z-50 transition duration-150"
+          ? "flex justify-between h-14 w-screen px-28 py-3 fixed z-50 bg-navPurple transition duration-150"
+          : "flex justify-between h-14 w-screen px-28 py-3 fixed z-50 transition duration-150"
       }
     >
       <h1

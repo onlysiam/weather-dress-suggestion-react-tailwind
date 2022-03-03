@@ -1,19 +1,20 @@
 import React from "react";
 import { Link } from "react-scroll";
+import { useLocation, useNavigate } from "react-router-dom";
 //redux
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 //reducer
 import {
   authWindowToggle,
   authWindowToggleFalse,
 } from "../../store/loaders/authWindow";
 import { signupWindowToggleFalse } from "../../store/loaders/signupWindow";
-import {
-  loginWindowToggleTrue,
-  loginWindowToggleFalse,
-} from "../../store/loaders/loginWindow";
+import { loginWindowToggleTrue } from "../../store/loaders/loginWindow";
 const Element = ({ body, target, url }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+  //useEffect
   const navigateHandler = () => {
     if (url) {
       dispatch(signupWindowToggleFalse());
@@ -21,6 +22,12 @@ const Element = ({ body, target, url }) => {
       dispatch(authWindowToggle());
     }
     if (!url) dispatch(authWindowToggleFalse());
+    if (
+      target === "home" ||
+      "about" ||
+      ("contact" && location.pathname !== "/home")
+    )
+      navigate("/home");
   };
 
   return (
@@ -28,7 +35,7 @@ const Element = ({ body, target, url }) => {
       onClick={navigateHandler}
       className="linkNavNotActive"
       activeClass="active"
-      to={target}
+      to="{target}"
       spy={true}
       smooth={true}
       duration={500}

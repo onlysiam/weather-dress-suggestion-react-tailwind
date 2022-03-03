@@ -1,12 +1,40 @@
+import { useState } from "react";
 //components
 import { Button, SelectButton } from "../formComponents/FormComponents";
 //images
 import bg from "../../img/background pictures/citysearchBg.svg";
 import locationImg from "../../img/citysearch page/location.svg";
-import arrow from "../../img/citysearch page/arrow.svg";
+//redux
+import { useDispatch } from "react-redux";
+import { loadWeatherData } from "../../store/weatherdata";
+import { forecastWindowToggle } from "../../store/loaders/forecastwindows";
+//animation
+import { motion } from "framer-motion";
+import { pageAnimation } from "../Animation";
 const Citysearch = () => {
+  const dispatch = useDispatch();
+  const [cityName, setCityName] = useState("");
+  const [countryName, setCountryName] = useState("BD");
+  //handlers
+  const cityInputHandler = (e) => {
+    setCityName(e.target.value);
+  };
+  const countryInputHandler = (e) => {
+    setCountryName(e.target.value);
+  };
+  const getWeatherDataHandler = () => {
+    const param = cityName + "," + countryName;
+    dispatch(loadWeatherData(param));
+    dispatch(forecastWindowToggle());
+  };
   return (
-    <div className="flex flex-col justify-evenly items-start w-screen px-60">
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      className="flex flex-col justify-evenly items-start w-screen px-60"
+    >
       <div className="">
         <img className="fixed top-0 left-0 w-screen z-10" src={bg} alt="" />
       </div>
@@ -16,18 +44,24 @@ const Citysearch = () => {
         </h1>
         <div className="flex justify-center items-start z-20 mt-20">
           <Button body="Current Location" image={locationImg} />
-          <SelectButton body="Country" />
+          <SelectButton
+            onChange={countryInputHandler}
+            value={countryName}
+            body="Country"
+          />
         </div>
         <div className="flex mt-5 gap-3 w-full justify-bwtween items-start z-20">
           <input
+            onChange={cityInputHandler}
+            value={cityName}
             className="basis-11/12 border-2 h-11 border-purple-600 outline-none px-4 text-white rounded bg-inputPurple focus:border-bgpurple duration-150"
             type="text"
             placeholder="City/Place"
           />
-          <Button mr="mr-0" body="Search" />
+          <Button onClick={getWeatherDataHandler} mr="mr-0" body="Search" />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
