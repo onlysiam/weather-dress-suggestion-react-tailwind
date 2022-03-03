@@ -29,7 +29,7 @@ const ForecastNav = () => {
         text={forecastWindow.hourly ? "btext-black" : "text-gray-400"}
         hoverBg=" "
         font="font-ubuntu"
-        active={forecastWindow.hourly ? "border-b-2 border-b-bgpurple" : ""}
+        active={forecastWindow.hourly ? "border-b-2 border-b-primary" : ""}
       />
       <Button
         onClick={weeklyHandler}
@@ -38,7 +38,7 @@ const ForecastNav = () => {
         text={forecastWindow.weekly ? "btext-black" : "text-gray-400"}
         hoverBg=" "
         font="font-ubuntu"
-        active={forecastWindow.weekly ? "border-b-2 border-b-bgpurple" : ""}
+        active={forecastWindow.weekly ? "border-b-2 border-b-primary" : ""}
       />
       <Button
         onClick={monthlyHandler}
@@ -47,7 +47,7 @@ const ForecastNav = () => {
         text={forecastWindow.monthly ? "btext-black" : "text-gray-400"}
         hoverBg=" "
         font="font-ubuntu"
-        active={forecastWindow.monthly ? "border-b-2 border-b-bgpurple" : ""}
+        active={forecastWindow.monthly ? "border-b-2 border-b-primary" : ""}
       />
     </div>
   );

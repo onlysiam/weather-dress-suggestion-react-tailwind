@@ -87,20 +87,20 @@ const Login = () => {
           h="h-10"
           font="font-ubuntu"
           bg="bg-red-500"
-          hoverBg="hover:bg-bgpurple"
+          hoverBg="hover:bg-primary"
           hoverText="hover:text-white"
         />
       </div>
       <div className="flex flex-col basis-full mt-2">
         <Link
-          className="text-gray-700 font-medium font-ubuntu hover:text-bgpurple duration-150"
+          className="text-gray-700 font-medium font-ubuntu hover:text-primary duration-150"
           to="reset"
         >
           Forgot Password?
         </Link>
         <Link
           onClick={signupWindowHandler}
-          className="text-gray-700 font-medium font-ubuntu hover:text-bgpurple duration-150"
+          className="text-gray-700 font-medium font-ubuntu hover:text-primary duration-150"
           to="#"
         >
           Create an account{" "}

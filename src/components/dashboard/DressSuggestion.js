@@ -14,7 +14,7 @@ const DressSuggestion = () => {
         Dress Suggestion:
       </h1>
       <div className="flex justify-center items-center flex-wrap gap-x-4 gap-y-6 mt-4 overflow-hidden">
-        <Card type="Accessories" image={acc} bg="bg-skyblue" />
+        <Card type="Accessories" image={acc} bg="bg-secondary" />
         <Card type="Top" image={top} bg="bg-navPurpleCompliment" />
         <Card type="Bottom" image={bottom} bg="bg-skyBlueCompliment" />
         <Card type="Shoes" image={shoe} bg="bg-navPurple" />

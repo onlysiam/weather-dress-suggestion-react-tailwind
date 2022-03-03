@@ -15,7 +15,7 @@ const About = () => {
       <div className="z-10">
         <img className="absolute w-full top-0 left-0" src={aboutBg} alt="" />
       </div>
-      <h1 className="font-ubuntu text-5xl text-bgpurple font-extrabold overflow-hidden z-20">
+      <h1 className="font-ubuntu text-5xl text-primary font-extrabold overflow-hidden z-20">
         Dress For The Weather
       </h1>
       <div className="flex flex-col justify-center w-3/4 items-start  mt-10 z-20">

@@ -16,14 +16,16 @@ import Alerts from "./components/alerts/Alerts";
 import { useSelector, useDispatch } from "react-redux";
 function App() {
   const location = useLocation();
-
+  const weatherDataLoading = useSelector(
+    (state) => state.entities.weatherData.loading
+  );
   const authenticationWindowState = useSelector(
     (state) => state.loader.authWindow.state
   );
 
   return (
     <div className="App">
-      {/* <Preloader /> */}
+      {weatherDataLoading.state ? <Preloader /> : ""}
       <Navbar />
       <Alerts />
       <AnimatePresence>

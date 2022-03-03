@@ -18,9 +18,9 @@ module.exports = {
         ubuntu: ["Ubuntu"],
       },
       colors: {
-        white: "white",
-        skyblue: "#29abe2",
-        bgpurple: "#64a2ff",
+        primary: "#64a2ff",
+        secondary: "#29abe2",
+        accent: "#E26029",
         bgOpacityPointOne: "rgba(0,0,0,0.1)",
         navPurple: "#3154C2",
         btnPurple: "#A091EB",

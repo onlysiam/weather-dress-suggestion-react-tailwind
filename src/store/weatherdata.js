@@ -24,12 +24,13 @@ const slice = createSlice({
     },
     hourly: [],
     weekly: [],
-    loading: false,
+    loading: { state: false, status: "pre-fetch" },
     lastFetch: null,
   },
   reducers: {
     dataRequested: (data, action) => {
-      data.loading = true;
+      data.loading.state = true;
+      data.loading.status = "pre-fetch";
     },
     dataAdded: (data, action) => {
       data.currently.lat = action.payload.openweatherData.coord.lat;
@@ -39,7 +40,10 @@ const slice = createSlice({
         action.payload.openweatherData.name +
         ", " +
         action.payload.openweatherData.sys.country;
-      data.currently.cityImage = action.payload.placeImage[0].webformatURL;
+      data.currently.cityImage =
+        action.payload.placeImage.length > 0
+          ? action.payload.placeImage[0].webformatURL
+          : "";
       data.currently.temperature = parseInt(
         action.payload.openweatherData.main.temp
       );
@@ -78,11 +82,13 @@ const slice = createSlice({
         });
       });
 
-      data.loading = false;
+      data.loading.state = false;
+      data.loading.status = "post-fetch";
     },
 
     dataRequestFailed: (data, action) => {
-      data.loading = false;
+      data.loading.state = false;
+      data.loading.status = "pre-fetch";
     },
   },
 });

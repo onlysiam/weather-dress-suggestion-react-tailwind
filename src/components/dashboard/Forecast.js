@@ -39,7 +39,7 @@ const Forecast = () => {
           <input
             onChange={cityInputHandler}
             value={cityName}
-            className="h-8 pl-2 rounded outline-none text-black font-goth placeholder-gray-600 focus:border-bgpurple duration-150"
+            className="h-8 pl-2 rounded outline-none text-black font-goth placeholder-gray-600 focus:border-primary duration-150"
             type="text"
           />
         </div>

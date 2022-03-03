@@ -23,9 +23,8 @@ const Element = ({ body, target, url }) => {
     }
     if (!url) dispatch(authWindowToggleFalse());
     if (
-      target === "home" ||
-      "about" ||
-      ("contact" && location.pathname !== "/home")
+      target === ("home" || "about" || "contact") &&
+      location.pathname !== "/home"
     )
       navigate("/home");
   };
@@ -33,14 +32,14 @@ const Element = ({ body, target, url }) => {
   return (
     <Link
       onClick={navigateHandler}
-      className="linkNavNotActive"
+      className="linkNavNotActive cursor-pointer"
       activeClass="active"
-      to="{target}"
+      to={target}
       spy={true}
       smooth={true}
       duration={500}
     >
-      <h1 className="text-lg cursor-pointer font-bold">{body}</h1>
+      <h1 className="text-lg font-bold">{body}</h1>
     </Link>
   );
 };

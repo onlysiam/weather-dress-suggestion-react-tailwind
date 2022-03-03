@@ -11,7 +11,7 @@ const Weatherwindow = () => {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="flex justify-center items-center w-screen h-screen bg-bgpurple mt-10"
+      className="flex justify-center items-center w-screen h-screen bg-primary mt-10"
     >
       <div className="flex flex-col justify-center items-center h-85p w-30p bg-bluishBlack rounded-l-xl">
         <CurrentWeather />

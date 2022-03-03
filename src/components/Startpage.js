@@ -23,7 +23,7 @@ const Startpage = () => {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="w-screen h-screen absolute flex flex-col items-center justify-center bg-bgpurple text-white left-0 z-50 transition duration-500"
+      className="w-screen h-screen absolute flex flex-col items-center justify-center bg-primary text-white left-0 z-50 transition duration-500"
     >
       <img className="mb-2 h-36" src={logo} alt="hey" />
       <h1>Weather Closet</h1>
