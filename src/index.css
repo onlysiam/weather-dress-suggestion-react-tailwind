@@ -35,3 +35,63 @@ body {
   border-bottom-left-radius: 5%;
   border-bottom-right-radius: 5%;
 }
+
+.preloaderContainer {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #d0e3ff;
+  z-index: 100;
+}
+
+.preloaderContainer .loader {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30vw;
+  height: 50vh;
+}
+.preloaderContainer .loader .sun {
+  position: absolute;
+  top: 7rem;
+  left: 5rem;
+  height: 4rem;
+  z-index: 1;
+  animation: sun 3s infinite;
+}
+.preloaderContainer .loader .cloud {
+  height: 4rem;
+  margin-right: -5rem;
+  z-index: 2;
+  animation: cloud 3s infinite;
+}
+@keyframes sun {
+  0% {
+    left: 6rem;
+  }
+
+  50% {
+    left: 15rem;
+  }
+
+  100% {
+    left: 6rem;
+  }
+}
+@keyframes cloud {
+  0% {
+    margin-right: 5rem;
+  }
+
+  50% {
+    margin-right: -5rem;
+  }
+
+  100% {
+    margin-right: 5rem;
+  }
+}

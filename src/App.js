@@ -6,6 +6,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 //components
 import Startpage from "./components/Startpage";
+import Preloader from "./components/Preloader";
 import Navbar from "./components/Navbar";
 import HomeSection from "./components/HomeSection";
 import Dashboard from "./components/Dashboard";
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* <Preloader /> */}
       <Navbar />
       <Alerts />
       <AnimatePresence>
