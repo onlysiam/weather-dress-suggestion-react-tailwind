@@ -9,7 +9,7 @@ import Aboutdetails from "./Aboutdetails";
 const About = () => {
   return (
     <div
-      name="about"
+      id="about"
       className="relative h-screen w-screen flex flex-row justify-between items-center pl-72 pr-60 bg-white"
     >
       <div className="z-10">

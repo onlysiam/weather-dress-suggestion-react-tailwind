@@ -1,17 +1,40 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx,svg}"],
   theme: {
+    screens: {
+      sm: "500px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "768px",
+      // => @media (min-width: 768px) { ... }
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1280px",
+      // => @media (min-width: 1280px) { ... }
+
+      "2xl": "1536px",
+      // => @media (min-width: 1536px) { ... }
+    },
     extend: {
       spacing: {
         mbottom: "100%",
         "65%": "29rem",
         100: "35rem",
+        98: "30rem",
         "ml50%": "50%",
-        "30p": "27%",
-        "35p": "35%",
-        "60p": "60%",
-        "85p": "85%",
         "15p": "15%",
+        "20p": "20%",
+        "25p": "25%",
+        "27p": "27%",
+        "30p": "30%",
+        "35p": "35%",
+        "37p": "37%",
+        "50p": "50%",
+        "60p": "60%",
+        "65p": "65%",
+        "85p": "85%",
       },
       fontFamily: {
         goth: ['"Gothic A1"'],

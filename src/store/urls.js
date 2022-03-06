@@ -1,5 +1,7 @@
 export const weatehrDataUrl = "/weatherdata";
+export const citySuggestionUrl = "/getcity";
 export const lanLotUrl = "/lanlot";
+export const countryCodesUrl = "/countrycodes";
 
 export const courseUrl = "/courses";
 export const deleteCourseUrl = "/courseremoved";

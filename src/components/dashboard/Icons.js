@@ -1,5 +1,5 @@
 import React from "react";
-import Skycons, { SkyconsType } from "react-skycons";
+import Skycons from "react-skycons";
 
 const Icons = ({ type, size, color }) => {
   if (color === "inherit") {

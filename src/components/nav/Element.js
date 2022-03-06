@@ -14,6 +14,7 @@ const Element = ({ body, target, url }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
+
   //useEffect
   const navigateHandler = () => {
     if (url) {
@@ -23,7 +24,7 @@ const Element = ({ body, target, url }) => {
     }
     if (!url) dispatch(authWindowToggleFalse());
     if (
-      target === ("home" || "about" || "contact") &&
+      (target === "home" || target === "about" || target === "contact") &&
       location.pathname !== "/home"
     )
       navigate("/home");
@@ -32,7 +33,7 @@ const Element = ({ body, target, url }) => {
   return (
     <Link
       onClick={navigateHandler}
-      className="linkNavNotActive cursor-pointer"
+      className="linkNavNotActive flex justify-center items-center h-full cursor-pointer"
       activeClass="active"
       to={target}
       spy={true}

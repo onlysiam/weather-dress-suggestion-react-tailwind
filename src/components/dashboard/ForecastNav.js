@@ -27,27 +27,39 @@ const ForecastNav = () => {
         body="48 Hours"
         bg="bg-transparent"
         text={forecastWindow.hourly ? "btext-black" : "text-gray-400"}
-        hoverBg=" "
+        hover="hover:text-primary"
         font="font-ubuntu"
-        active={forecastWindow.hourly ? "border-b-2 border-b-primary" : ""}
+        active={
+          forecastWindow.hourly
+            ? "border-b-2 border-b-primary"
+            : "border-b-2 border-b-transparent"
+        }
       />
       <Button
         onClick={weeklyHandler}
         body="Week"
         bg="bg-transparent"
         text={forecastWindow.weekly ? "btext-black" : "text-gray-400"}
-        hoverBg=" "
+        hover="hover:text-primary"
         font="font-ubuntu"
-        active={forecastWindow.weekly ? "border-b-2 border-b-primary" : ""}
+        active={
+          forecastWindow.weekly
+            ? "border-b-2 border-b-primary"
+            : "border-b-2 border-b-transparent"
+        }
       />
       <Button
         onClick={monthlyHandler}
         body="Month"
         bg="bg-transparent"
         text={forecastWindow.monthly ? "btext-black" : "text-gray-400"}
-        hoverBg=" "
+        hover="hover:text-primary"
         font="font-ubuntu"
-        active={forecastWindow.monthly ? "border-b-2 border-b-primary" : ""}
+        active={
+          forecastWindow.monthly
+            ? "border-b-2 border-b-primary"
+            : "border-b-2 border-b-transparent"
+        }
       />
     </div>
   );

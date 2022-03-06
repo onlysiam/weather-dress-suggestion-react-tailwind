@@ -1,6 +1,6 @@
 import axios from "axios";
 import { alertToggleTrue } from "../alerts/alert";
-import { loadWeatherData } from "../weatherdata";
+import { dataReset } from "../weatherdata";
 import * as actions from "../api";
 const api =
   ({ dispatch }) =>
@@ -20,8 +20,13 @@ const api =
         method,
         data,
       });
-      if (response.data) dispatch(actions.apiCallSuccess(response.data));
+      if (response.data) {
+        dispatch(actions.apiCallSuccess(response.data));
+      }
       if (onSuccess && response.data) {
+        if (onSuccess === "weatherData/dataAdded") {
+          dispatch(dataReset());
+        }
         dispatch({ type: onSuccess, payload: response.data });
         if (onSuccess === "users/userAdded") {
           dispatch({ type: alertToggleTrue.type, payload: "success" });

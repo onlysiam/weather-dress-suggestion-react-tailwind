@@ -1,19 +1,15 @@
 import { Link } from "react-router-dom";
-//image
-import userIcon from "../../img/login props/user.svg";
-import passIcon from "../../img/login props/pass.svg";
 //Animations
 import { motion } from "framer-motion";
 import { loginSignupPageAnimation } from "../Animation";
 //components
-import { Button, Input, CheckedInput } from "../formComponents/FormComponents";
+import { Button, Input } from "../formComponents/FormComponents";
 //redux
 import { useDispatch } from "react-redux";
 //reducers
 import { alertToggleTrue } from "../../store/alerts/alert";
 import { loginWindowToggle } from "../../store/loaders/loginWindow";
 import { signupWindowToggle } from "../../store/loaders/signupWindow";
-import { useEffect, useState } from "react";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -91,14 +87,12 @@ const Signup = () => {
         <Button
           onClick={signupHandler}
           body="Sign up"
-          mr="mr-0"
-          px="px-6"
-          py="py-2"
-          h="h-10"
-          font="font-ubuntu"
+          margin="mr-0"
+          padding="px-6 py-2"
+          dimensions="h-10"
+          font="font-ubuntu font-bold"
           bg="bg-red-500"
-          hoverBg="hover:bg-primary"
-          hoverText="hover:text-white"
+          hover="hover:bg-primary hover:text-white"
         />
       </div>
       <div className="flex flex-col basis-full mt-2">

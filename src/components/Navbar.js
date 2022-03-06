@@ -20,8 +20,8 @@ const Navbar = () => {
     <div
       className={
         navbarScroll
-          ? "flex justify-between h-14 w-screen px-28 py-3 fixed z-50 bg-navPurple transition duration-150"
-          : "flex justify-between h-14 w-screen px-28 py-3 fixed z-50 transition duration-150"
+          ? "flex justify-between items-center h-14 w-screen px-28 py-3 fixed z-30 bg-navPurple transition duration-150"
+          : "flex justify-between items-center h-14 w-screen px-28 py-3 fixed z-30 transition duration-150"
       }
     >
       <h1
@@ -30,7 +30,7 @@ const Navbar = () => {
       >
         Weather Closet
       </h1>
-      <div className="flex gap-10">
+      <div className="flex justify-center items-center h-full gap-10">
         <Element body="Home" target="home" />
         <Element body="About" target="about" />
         <Element body="Contact" target="contact" />

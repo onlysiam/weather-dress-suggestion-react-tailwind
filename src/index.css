@@ -17,7 +17,6 @@ body {
 ::-webkit-scrollbar {
   width: 5px;
   cursor: pointer;
-  background: #ffffff;
 }
 ::-webkit-scrollbar-thumb {
   background: #313131;

@@ -65,3 +65,14 @@ export const farenheitToCelcius = (temp) => {
   const celcius = ((temp - 32) * 5) / 9;
   return celcius;
 };
+
+//Country Name
+export const searchedCountry = (country, codes) => {
+  const countryName = codes.filter((code) => code.countryCode === country);
+  return countryName;
+};
+
+//meter/s to km/h
+export const msToKmh = (ms) => {
+  return parseInt((ms * (60 * 60)) / 1000);
+};

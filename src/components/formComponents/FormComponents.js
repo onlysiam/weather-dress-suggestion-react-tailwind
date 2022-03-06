@@ -1,58 +1,43 @@
 export const Button = ({
-  body,
-  image,
-  px,
-  py,
-  w,
-  h,
-  mr,
-  mt,
-  bg,
-  font,
-  fontWeight,
-  text,
-  textSize,
-  rounded,
-  hoverText,
-  hoverBg,
   onClick,
   active,
+  body,
+  image,
+  padding,
+  dimensions,
+  margin,
+  bg,
+  font,
+  text,
+  hover,
+  screens,
+  border,
 }) => {
-  w = w ? w + " " : " ";
-  h = h ? h + " " : "h-11 ";
-  px = px ? px + " " : "px-3 ";
-  py = py ? py + " " : "py-3 ";
-  mr = mr ? mr + " " : "mr-8 ";
-  mt = mt ? mt + " " : "";
+  dimensions = dimensions ? dimensions + " " : "h-11 ";
+  padding = padding ? padding + " " : "px-3 py-3 ";
+  margin = margin ? margin + " " : "mr-8 ";
   bg = bg ? bg + " " : "bg-primary ";
-  font = font ? font + " " : " ";
-  fontWeight = fontWeight ? fontWeight + " " : "font-bold ";
-  rounded = rounded ? rounded + " " : "rounded ";
+  font = font ? font + " " : "font-bold ";
+  screens = screens ? screens + " " : "";
+  border = border ? border + " " : "rounded ";
   text = text ? text + " " : "text-white ";
-  textSize = textSize ? textSize + " " : " ";
-  hoverText = hoverText ? hoverText + " " : "hover:text-primary ";
-  hoverBg = hoverBg ? hoverBg + " " : "hover:bg-white ";
+  hover = hover ? hover + " " : "hover:text-primary hover:bg-white ";
   active = active ? active + " " : "";
 
   return (
     <button
       onClick={(e) => onClick(e)}
       className={
-        px +
-        py +
-        w +
-        h +
-        mr +
-        mt +
+        dimensions +
+        padding +
+        margin +
         font +
-        fontWeight +
         bg +
-        hoverText +
-        hoverBg +
+        hover +
         text +
-        textSize +
+        screens +
+        border +
         active +
-        rounded +
         "flex justify-center items-center overflow-hidden cursor-pointer outline-none duration-500"
       }
     >
@@ -105,7 +90,7 @@ export const SelectButton = ({
       <option value="BD">Bangladesh</option>
       <option value="IND">India</option>
       <option value="US">USA</option>
-      <option value="UK">UK</option>
+      <option value="GB">UK</option>
     </select>
   );
 };

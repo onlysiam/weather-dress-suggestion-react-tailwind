@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect } from "react";
 //router
 import { Routes, Route, useLocation } from "react-router-dom";
 
@@ -14,7 +14,9 @@ import Authentication from "./components/Authentication";
 import Alerts from "./components/alerts/Alerts";
 //redux
 import { useSelector, useDispatch } from "react-redux";
+import { loadCountryCodes } from "./store/countrycodes";
 function App() {
+  const dispatch = useDispatch();
   const location = useLocation();
   const weatherDataLoading = useSelector(
     (state) => state.entities.weatherData.loading
@@ -22,6 +24,11 @@ function App() {
   const authenticationWindowState = useSelector(
     (state) => state.loader.authWindow.state
   );
+
+  //useEffect
+  useEffect(() => {
+    dispatch(loadCountryCodes());
+  }, []);
 
   return (
     <div className="App">

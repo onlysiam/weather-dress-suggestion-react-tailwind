@@ -14,8 +14,6 @@ import { useDispatch } from "react-redux";
 import { alertToggleTrue } from "../../store/alerts/alert";
 import { loginWindowToggle } from "../../store/loaders/loginWindow";
 import { signupWindowToggle } from "../../store/loaders/signupWindow";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -81,14 +79,12 @@ const Login = () => {
         <Button
           onClick={logInHandler}
           body="Log in"
-          mr="mr-0"
-          px="px-6"
-          py="py-2"
-          h="h-10"
-          font="font-ubuntu"
+          margin="mr-0"
+          padding="px-6 py-2"
+          dimensions="h-10"
+          font="font-ubuntu font-bold"
           bg="bg-red-500"
-          hoverBg="hover:bg-primary"
-          hoverText="hover:text-white"
+          hover="hover:bg-primary hover:text-white"
         />
       </div>
       <div className="flex flex-col basis-full mt-2">

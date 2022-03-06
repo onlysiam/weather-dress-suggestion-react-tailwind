@@ -1,5 +1,5 @@
 //image
-import bg from "../img/login props/loginBg.svg";
+import bg from "../img/background pictures/authenticatin.svg";
 //Animations
 import { motion, AnimatePresence } from "framer-motion";
 import { authPageAnimation } from "./Animation";
@@ -7,7 +7,7 @@ import { authPageAnimation } from "./Animation";
 import Login from "./authentication/Login";
 import Signup from "./authentication/Signup";
 //redux
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 const Authentication = () => {
   const loginState = useSelector((state) => state.loader.loginWindow.state);
   const signupState = useSelector((state) => state.loader.signupWindow.state);
@@ -22,7 +22,7 @@ const Authentication = () => {
     >
       <div>
         <img
-          className="absolute h-full object-cover top-0 left-0 z-10"
+          className="absolute h-full object-cover top-0 left-0 z-40"
           src={bg}
           alt=""
         />

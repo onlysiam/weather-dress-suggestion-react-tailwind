@@ -6,7 +6,7 @@ import Grow from "@mui/material/Grow";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { alertToggleTrue, alertToggleFalse } from "../../store/alerts/alert";
+import { alertToggleFalse } from "../../store/alerts/alert";
 
 const Alerts = () => {
   const dispatch = useDispatch();
