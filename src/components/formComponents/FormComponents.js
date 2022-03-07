@@ -110,6 +110,8 @@ export const CheckedInput = ({ body }) => {
 };
 
 export const Input = ({
+  onChange,
+  value,
   image,
   basis,
   pl,
@@ -138,6 +140,8 @@ export const Input = ({
     <div className="relative flex">
       {image ? <img className="absolute h-5 left-0" src={image} alt="" /> : ""}
       <input
+        onChange={(e) => onChange(e)}
+        value={value}
         className={
           basis +
           pl +

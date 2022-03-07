@@ -33,7 +33,7 @@ const Element = ({ body, target, url }) => {
   return (
     <Link
       onClick={navigateHandler}
-      className="linkNavNotActive flex justify-center items-center h-full cursor-pointer"
+      className="linkNavNotActive flex justify-center items-center h-full cursor-pointer pt-2"
       activeClass="active"
       to={target}
       spy={true}

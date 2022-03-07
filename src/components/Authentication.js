@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 //image
 import bg from "../img/background pictures/authenticatin.svg";
 //Animations
@@ -7,10 +8,32 @@ import { authPageAnimation } from "./Animation";
 import Login from "./authentication/Login";
 import Signup from "./authentication/Signup";
 //redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+//reducer
+import { alertToggleTrue } from "../store/alerts/alert";
+import { authWindowToggleFalse } from "../store/loaders/authWindow";
+import { loginWindowToggleFalse } from "../store/loaders/loginWindow";
+import { authReceived } from "../store/auth";
 const Authentication = () => {
+  const dispatch = useDispatch();
+  const authenticated = useSelector(
+    (state) => state.entities.user.authenticated
+  );
   const loginState = useSelector((state) => state.loader.loginWindow.state);
   const signupState = useSelector((state) => state.loader.signupWindow.state);
+
+  useEffect(() => {
+    if (authenticated) {
+      dispatch(loginWindowToggleFalse());
+      dispatch(authWindowToggleFalse());
+      dispatch(
+        alertToggleTrue({ type: "success", message: "Successfully Logged In." })
+      );
+      setTimeout(() => {
+        dispatch(authReceived());
+      }, 1000);
+    }
+  }, [authenticated]);
   return (
     <motion.div
       name="login"

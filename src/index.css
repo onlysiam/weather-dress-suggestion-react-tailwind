@@ -43,7 +43,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #d0e3ff;
-  z-index: 100;
+  z-index: 90;
 }
 
 .preloaderContainer .loader {

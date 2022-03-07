@@ -11,31 +11,26 @@ import { Button, Input, CheckedInput } from "../formComponents/FormComponents";
 //redux
 import { useDispatch } from "react-redux";
 //reducers
-import { alertToggleTrue } from "../../store/alerts/alert";
 import { loginWindowToggle } from "../../store/loaders/loginWindow";
 import { signupWindowToggle } from "../../store/loaders/signupWindow";
+import { login } from "../../store/auth";
+import { useState } from "react";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   //handlers
+  const usernameInputHandler = (e) => {
+    setUsername(e.target.value);
+  };
+  const passwordInputHandler = (e) => {
+    setPassword(e.target.value);
+  };
   const logInHandler = (e) => {
     e.preventDefault();
-
-    Axios.get("http://localhost:3001/currentweather").then((response, err) => {
-      console.log("yo");
-      if (response.data.message) {
-        console.log("success");
-        console.log(response.data.message);
-      } else {
-        console.log(response.data);
-        console.log(err);
-      }
-    });
-
-    dispatch(
-      alertToggleTrue({ type: "success", message: "Successfully Logged In." })
-    );
+    dispatch(login(username, password));
   };
 
   const signupWindowHandler = () => {
@@ -56,6 +51,8 @@ const Login = () => {
       <div className="flex flex-wrap justify-center items-start mt-6">
         <div className="basis-full justify-center items-start">
           <Input
+            onChange={usernameInputHandler}
+            value={username}
             image={userIcon}
             placeholder="User name"
             basis="basis-full"
@@ -64,6 +61,8 @@ const Login = () => {
         </div>
         <div className="basis-full justify-center items-start mt-8">
           <Input
+            onChange={passwordInputHandler}
+            value={password}
             type="password"
             placeholder="Password"
             image={passIcon}

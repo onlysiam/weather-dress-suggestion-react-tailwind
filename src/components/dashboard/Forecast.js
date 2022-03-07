@@ -66,6 +66,7 @@ const Forecast = () => {
     if (cityName && countryCode) {
       dispatch(loadWeatherData("direct", cityName, countryCode));
       setCityName("");
+      dispatch(citySuggestionReset());
       setCountrySuggestions("");
     }
   };

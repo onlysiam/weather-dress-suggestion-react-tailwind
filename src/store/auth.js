@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
 import { authUrl, registerUrl } from "./urls";
-import { userAdded } from "./users";
+import { userAdded } from "./user";
 import { preloaderToggleFalse } from "./loaders/preloader";
 
 const slice = createSlice({
@@ -17,7 +17,6 @@ const slice = createSlice({
       authentication.loading = true;
     },
     authReceived: (authentication, action) => {
-      authentication.list = action.payload;
       authentication.loading = false;
       authentication.lastFetch = Date.now();
     },
@@ -44,16 +43,15 @@ const slice = createSlice({
   },
 });
 
-const { authRequested, authRequestFailed } = slice.actions;
+export const { authRequested, authRequestFailed, authReceived } = slice.actions;
 export default slice.reducer;
 
 //Action Creator
 
-export const login = (credentials) =>
+export const login = (username, password) =>
   apiCallBegan({
-    url: authUrl,
-    method: "post",
-    data: credentials,
+    url: authUrl + "/" + username + "/" + password,
+    method: "get",
     onStart: authRequested.type,
     onSuccess: userAdded.type,
     onError: preloaderToggleFalse.type,

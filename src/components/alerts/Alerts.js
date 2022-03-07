@@ -23,7 +23,7 @@ const Alerts = () => {
     }
   }, [alert]);
   return (
-    <div className="absolute flex justify-center items-start mt-2 ml-ml50% z-50 -translate-x-1/2">
+    <div className="absolute flex justify-center items-start mt-2 ml-ml50% z-100 -translate-x-1/2">
       <Box sx={{ display: "flex" }}>
         <Grow in={checked}>
           <Alert

@@ -15,11 +15,15 @@ import Alerts from "./components/alerts/Alerts";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import { loadCountryCodes } from "./store/countrycodes";
+import Profile from "./components/Profile";
 function App() {
   const dispatch = useDispatch();
   const location = useLocation();
   const weatherDataLoading = useSelector(
     (state) => state.entities.weatherData.loading
+  );
+  const authentication = useSelector(
+    (state) => state.entities.userAuthentication.loading
   );
   const authenticationWindowState = useSelector(
     (state) => state.loader.authWindow.state
@@ -32,9 +36,15 @@ function App() {
 
   return (
     <div className="App">
-      {weatherDataLoading.state ? <Preloader /> : ""}
-      <Navbar />
       <Alerts />
+      <AnimatePresence>
+        {weatherDataLoading.state || authentication ? (
+          <Preloader key={1} />
+        ) : (
+          ""
+        )}
+      </AnimatePresence>
+      <Navbar />
       <AnimatePresence>
         {authenticationWindowState ? <Authentication /> : ""}
       </AnimatePresence>
@@ -43,6 +53,7 @@ function App() {
           <Route path="/" element={<Startpage />} />
           <Route path={"home"} element={<HomeSection />}></Route>
           <Route path={"dashboard"} element={<Dashboard />} />
+          <Route path={"profile"} element={<Profile />} />
         </Routes>
       </AnimatePresence>
     </div>

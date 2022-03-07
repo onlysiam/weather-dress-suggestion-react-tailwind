@@ -12,7 +12,7 @@ const Place = () => {
     (state) => state.entities.weatherData.currently
   );
   const authenticated = useSelector(
-    (state) => state.entities.users.authenticated
+    (state) => state.entities.user.authenticated
   );
 
   //handlers

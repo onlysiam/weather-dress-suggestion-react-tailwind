@@ -84,3 +84,19 @@ export const weatherForecastAnimation = {
     },
   },
 };
+export const menuAnimation = {
+  hidden: {
+    y: -200,
+    opacity: 0,
+  },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "spring", duration: 0.3 },
+  },
+  exit: {
+    y: -200,
+    opacity: 0,
+    transition: { type: "spring", duration: 0.3 },
+  },
+};
