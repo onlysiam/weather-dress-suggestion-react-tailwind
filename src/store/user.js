@@ -10,7 +10,7 @@ const slice = createSlice({
     email: "",
     profilepic: "",
     verified: "",
-    authenticated: true,
+    authenticated: false,
     uploading: false,
     lastFetch: null,
   },
@@ -48,7 +48,7 @@ const slice = createSlice({
       users.uploading = true;
     },
     userDpAdded: (users, action) => {
-      users.profilepic = action.payload;
+      if (action.payload.url) users.profilepic = action.payload.url;
       users.uploading = false;
     },
     uploadRequestFailed: (users, action) => {

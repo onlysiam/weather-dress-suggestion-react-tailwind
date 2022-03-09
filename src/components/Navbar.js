@@ -15,6 +15,7 @@ const Navbar = () => {
   const authenticated = useSelector(
     (state) => state.entities.user.authenticated
   );
+  const userInfo = useSelector((state) => state.entities.user);
   const [navbarScroll, setNavbarScroll] = useState(false);
   const [menu, setMenu] = useState(false);
   useEffect(() => {
@@ -31,8 +32,8 @@ const Navbar = () => {
     <div
       className={
         navbarScroll
-          ? "flex justify-between items-center h-14 w-screen px-28 py-2 fixed z-30 bg-navPurple transition duration-150 over overflow-visible"
-          : "flex justify-between items-center h-14 w-screen px-28 py-2 fixed z-30 transition duration-150 overflow-visible"
+          ? "flex justify-between items-center h-14 w-screen px-28 py-2 fixed z-50 bg-navPurple transition duration-150 over overflow-visible"
+          : "flex justify-between items-center h-14 w-screen px-28 py-2 fixed z-50 transition duration-150 overflow-visible"
       }
     >
       <h1
@@ -50,7 +51,7 @@ const Navbar = () => {
             <img
               onClick={() => setMenu(!menu)}
               className="absolute h-full w-full top-0 left-0 object-cover"
-              src={profilePic}
+              src={userInfo.profilepic}
               alt=""
             />
           </div>

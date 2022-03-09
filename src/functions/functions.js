@@ -76,3 +76,13 @@ export const searchedCountry = (country, codes) => {
 export const msToKmh = (ms) => {
   return parseInt((ms * (60 * 60)) / 1000);
 };
+
+//parsing file
+export const encodingImage = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+};

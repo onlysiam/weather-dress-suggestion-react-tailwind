@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 //image
@@ -14,7 +15,6 @@ import { useDispatch } from "react-redux";
 import { loginWindowToggle } from "../../store/loaders/loginWindow";
 import { signupWindowToggle } from "../../store/loaders/signupWindow";
 import { login } from "../../store/auth";
-import { useState } from "react";
 
 const Login = () => {
   const dispatch = useDispatch();

@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import { Link } from "react-router-dom";
 //Animations
 import { motion } from "framer-motion";
@@ -10,20 +12,44 @@ import { useDispatch } from "react-redux";
 import { alertToggleTrue } from "../../store/alerts/alert";
 import { loginWindowToggle } from "../../store/loaders/loginWindow";
 import { signupWindowToggle } from "../../store/loaders/signupWindow";
+import { register } from "../../store/auth";
+import { uploadPicture } from "../../store/user";
 
 const Signup = () => {
   const dispatch = useDispatch();
+  const [fname, setFname] = useState();
+  const [lname, setLname] = useState();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
 
   //handlers
+  const fnameHandler = (e) => {
+    setFname(e.target.value);
+  };
+  const lnameHandler = (e) => {
+    setLname(e.target.value);
+  };
+  const usernameHandler = (e) => {
+    setUsername(e.target.value);
+  };
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
   const signupHandler = (e) => {
     e.preventDefault();
 
-    dispatch(
-      alertToggleTrue({
-        type: "success",
-        message: "Account Created Successfully.",
-      })
-    );
+    dispatch(register({ fname, lname, username, password, email }));
+
+    // dispatch(
+    //   alertToggleTrue({
+    //     type: "success",
+    //     message: "Account Created Successfully.",
+    //   })
+    // );
   };
   const loginWindowHandler = () => {
     dispatch(loginWindowToggle());
@@ -47,12 +73,16 @@ const Signup = () => {
         </h1>
         <div className="flex basis-full justify-center items-start">
           <Input
+            onChange={usernameHandler}
+            value={username}
             placeholder="Username"
             basis="basis-full"
             pl="pl-0"
             mr="mr-6"
           />
           <Input
+            onChange={passwordHandler}
+            value={password}
             type="text"
             placeholder="Password of 8 characters"
             basis="basis-full"
@@ -67,15 +97,25 @@ const Signup = () => {
         </h1>
         <div className="flex basis-full justify-center items-start">
           <Input
+            onChange={fnameHandler}
+            value={fname}
             placeholder="First Name"
             basis="basis-full"
             pl="pl-0"
             mr="mr-6"
           />
-          <Input placeholder="Last Name" basis="basis-full" pl="pl-0" />
+          <Input
+            onChange={lnameHandler}
+            value={lname}
+            placeholder="Last Name"
+            basis="basis-full"
+            pl="pl-0"
+          />
         </div>
         <div className="basis-full justify-center items-start mt-6">
           <Input
+            onChange={emailHandler}
+            value={email}
             type="text"
             placeholder="Enter a valid email address"
             basis="basis-full"
