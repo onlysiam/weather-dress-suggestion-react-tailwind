@@ -1,11 +1,14 @@
-const Aboutdetails = ({ image, body }) => {
+const Aboutdetails = ({ image, body, flex }) => {
+  flex = flex ? flex + " " : "";
   return (
-    <div className="flex justify-evenly items-center pl-4 py-4">
+    <div className={flex + "flex w-full items-center py-4"}>
       <div className="w-1/6">
-        <img src={image} alt="" />
+        <img className="h-20" src={image} alt="" />
       </div>
-      <div className="w-3/5">
-        <h1 className="font-ubuntu text-xl font-semibold pl-4">{body}</h1>
+      <div className="w-full">
+        <h1 className="font-ubuntu text-base 2xl:text-lg font-medium pl-4">
+          {body}
+        </h1>
       </div>
     </div>
   );

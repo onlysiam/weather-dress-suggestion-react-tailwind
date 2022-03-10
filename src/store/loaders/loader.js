@@ -4,6 +4,7 @@ import loginWindowReducer from "./loginWindow";
 import signupWindowReducer from "./signupWindow";
 import forecastWindowReducer from "./forecastwindows";
 import preloaderReducer from "./preloader";
+import infoWindowReducer from "./infowindow";
 
 export default combineReducers({
   preloader: preloaderReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   loginWindow: loginWindowReducer,
   signupWindow: signupWindowReducer,
   forecastWindow: forecastWindowReducer,
+  infoWindow: infoWindowReducer,
 });

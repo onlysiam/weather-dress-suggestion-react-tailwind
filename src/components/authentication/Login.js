@@ -56,7 +56,7 @@ const Login = () => {
             image={userIcon}
             placeholder="User name"
             basis="basis-full"
-            pl="pl-6"
+            padding="pl-6"
           />
         </div>
         <div className="basis-full justify-center items-start mt-8">
@@ -67,7 +67,7 @@ const Login = () => {
             placeholder="Password"
             image={passIcon}
             basis="basis-full"
-            pl="pl-6"
+            padding="pl-6"
           />
         </div>
         <div className="flex basis-full justify-start items-center mt-6 ">

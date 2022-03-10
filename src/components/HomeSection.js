@@ -1,8 +1,10 @@
-import { motion } from "framer-motion";
+//components
 import About from "./about/About";
 import Home from "./home/Home";
+import Footer from "./footer/Footer";
 //animations
 import { pageAnimation } from "./Animation";
+import { motion } from "framer-motion";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 //reducer
@@ -32,6 +34,7 @@ const HomeSection = () => {
         )}
         <Home />
         <About />
+        <Footer />
       </div>
     </motion.div>
   );

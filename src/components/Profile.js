@@ -1,30 +1,29 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
-import dpAlt from "../img/profile props/profile picture placeholder.svg";
 //animation
 import { motion } from "framer-motion";
-//components
-import Card from "./profile/Card";
 import { pageAnimation } from "./Animation";
-//function
-import { encodingImage } from "../functions/functions";
+//components
+import Profilepicture from "./profile/Profilepicture";
+import Infocard from "./profile/Infocard";
+import Editinfo from "./profile/Editinfo";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 //reducer
-import { uploadPicture } from "../store/user";
-import { alertToggleTrue } from "../store/alerts/alert";
 import { authWindowToggleTrue } from "../store/loaders/authWindow";
 import { loginWindowToggleTrue } from "../store/loaders/loginWindow";
+import {
+  nameWindowToggle,
+  usernameWindowToggle,
+  passwordWindowToggle,
+  emailWindowToggle,
+} from "../store/loaders/infowindow";
 const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userInfo = useSelector((state) => state.entities.user);
-  const hiddenFileInput = useRef(null);
-  const [dp, setDp] = useState("");
-  const [selectedFile, setSelectedFile] = useState("");
-  const [changeBtn, setChangeBtn] = useState(false);
-  const [uploadBtn, setUploadBtn] = useState(false);
-  const [uploading, setUploading] = useState(false);
+  const infoWindows = useSelector((state) => state.loader.infoWindow);
 
   //useEffect
   useEffect(() => {
@@ -35,39 +34,20 @@ const Profile = () => {
       }, 500);
       navigate("/home");
     }
-    if (!dp) {
-      setDp(dpAlt);
-    }
   }, []);
-  useEffect(() => {
-    if (userInfo.profilepic) setDp(userInfo.profilepic);
-    if (userInfo.profilepic && uploadBtn) {
-      setDp(userInfo.profilepic);
-      dispatch(
-        alertToggleTrue({
-          type: "success",
-          message: "Profile Picture Has Been Updated.",
-        })
-      );
-      setUploading(false);
-      setUploadBtn(false);
-    }
-  }, [userInfo.profilepic]);
-  const onFileChangeHandler = async (e) => {
-    setSelectedFile(await encodingImage(e.target.files[0]));
-    const objectUrl = URL.createObjectURL(e.target.files[0]);
-    setDp(objectUrl);
-    setUploadBtn(true);
-    return () => URL.revokeObjectURL(objectUrl);
+
+  //handlers
+  const editNameHandler = () => {
+    dispatch(nameWindowToggle());
   };
-  const changeDpHandler = () => {
-    hiddenFileInput.current.click();
+  const editUsernameHandler = () => {
+    dispatch(usernameWindowToggle());
   };
-  const newDpUploadHandler = () => {
-    const username = userInfo.username;
-    const jsonData = JSON.stringify(selectedFile);
-    setUploading(true);
-    dispatch(uploadPicture({ username, jsonData }));
+  const editPasswordHandler = () => {
+    dispatch(passwordWindowToggle());
+  };
+  const editEmailHandler = () => {
+    dispatch(emailWindowToggle());
   };
 
   return (
@@ -79,61 +59,90 @@ const Profile = () => {
       className="flex justify-center h-screen w-screen items-center"
     >
       <div className="flex justify-center items-start h-80p w-85p gap-20 bg-white rounded-lg py-10 mt-4">
-        <div className="flex flex-col justify-center items-center w-25p">
-          <div
-            onMouseLeave={() => setChangeBtn(false)}
-            className="relative flex justify-center w-52 h-52 rounded-full overflow-hidden"
-          >
-            {changeBtn || uploadBtn ? (
-              <div>
-                <input
-                  className="hidden absolute"
-                  type="file"
-                  ref={hiddenFileInput}
-                  onChange={onFileChangeHandler}
-                />
-                {!uploadBtn ? (
-                  <button
-                    onClick={changeDpHandler}
-                    className="absolute bottom-0 text-lg text-white bg-black bg-opacity-70 w-full h-10 duration-150 cursor-pointer"
-                  >
-                    Change
-                  </button>
-                ) : (
-                  <button
-                    onClick={newDpUploadHandler}
-                    className="absolute bottom-0 text-lg text-white bg-black bg-opacity-70 w-full h-10 duration-150 cursor-pointer"
-                  >
-                    Upload
-                  </button>
-                )}
-              </div>
-            ) : (
-              ""
-            )}
-            {uploading ? (
-              <div className="absolute h-full w-full bg-gray-400 bg-opacity-70"></div>
-            ) : (
-              ""
-            )}
-            <img
-              onMouseOver={() => setChangeBtn(true)}
-              className="w-52 duration-150 object-cover"
-              src={dp}
-              alt=""
-            />
-          </div>
+        <Profilepicture />
 
-          <h1 className="text-2xl font-bold mt-3">{userInfo.name}</h1>
-        </div>
-        <div className="flex flex-col justify-center items-start w-75p h-96">
+        <div className="flex flex-col justify-start items-start w-75p h-full">
           <div className="flex justify-start items-center border-b border-black w-85p h-20 px-2">
             <h1 className="text-5xl font">Profile</h1>
           </div>
-          <Card body1="Name" body2={userInfo.name} body3="Edit" />
-          <Card body1="Username" body2={userInfo.username} body3="Change" />
-          <Card body1="Password" body2="********" body3="Change" />
-          <Card body1="Email" body2={userInfo.email} body3="Change" />
+          {/* <div className="border-b border-gray-700 border-opacity-20 w-85p h-20 px-2"> */}
+          <div
+            className={
+              (infoWindows.name ? "h-35p py-2 bg-gray-100 " : "h-20 ") +
+              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2"
+            }
+          >
+            <Infocard
+              onClick={editNameHandler}
+              body1="Name"
+              body2={userInfo.name}
+              body3="Edit"
+            />
+            {infoWindows.name ? (
+              <Editinfo
+                inputPlaceholder1="First Name"
+                inputPlaceholder2="Last Name"
+              />
+            ) : (
+              ""
+            )}
+          </div>
+
+          <div
+            className={
+              (infoWindows.username ? "h-35p py-2 bg-gray-100 " : "h-20 ") +
+              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2"
+            }
+          >
+            <Infocard
+              onClick={editUsernameHandler}
+              body1="Username"
+              body2={userInfo.username}
+              body3="Edit"
+            />
+            {infoWindows.username ? (
+              <Editinfo inputPlaceholder1="Username" />
+            ) : (
+              ""
+            )}
+          </div>
+
+          <div
+            className={
+              (infoWindows.password ? "h-35p py-2 bg-gray-100 " : "h-20 ") +
+              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2"
+            }
+          >
+            <Infocard
+              onClick={editPasswordHandler}
+              body1="Password"
+              body2="********"
+              body3="Edit"
+            />
+            {infoWindows.password ? (
+              <Editinfo
+                inputPlaceholder1="Old Password"
+                inputPlaceholder2="New Password"
+              />
+            ) : (
+              ""
+            )}
+          </div>
+
+          <div
+            className={
+              (infoWindows.email ? "h-35p py-2 bg-gray-100 " : "h-20 ") +
+              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2"
+            }
+          >
+            <Infocard
+              onClick={editEmailHandler}
+              body1="Email"
+              body2={userInfo.email}
+              body3="Edit"
+            />
+            {infoWindows.email ? <Editinfo inputPlaceholder1="Email" /> : ""}
+          </div>
         </div>
       </div>
     </motion.div>

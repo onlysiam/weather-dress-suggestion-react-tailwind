@@ -110,31 +110,27 @@ export const CheckedInput = ({ body }) => {
 };
 
 export const Input = ({
-  onChange,
+  bg,
+  type,
   value,
   image,
   basis,
-  pl,
-  mr,
+  border,
+  onChange,
   textSize,
-  type,
+  margin,
+  padding,
+  dimensions,
   placeholder,
-  bg,
-  px,
-  py,
-  w,
-  h,
 }) => {
   basis = basis ? basis + " " : "";
-  pl = pl ? pl + " " : "pl-0 ";
-  mr = mr ? mr + " " : "mr-0 ";
+  padding = padding ? padding + " " : "";
+  margin = margin ? margin + " " : "";
   bg = bg ? bg + " " : "bg-transparent ";
   textSize = textSize ? textSize + " " : "text-md ";
   type = type ? type : "text";
-  px = px ? px + " " : "px-0 ";
-  py = py ? py + " " : "py-0 ";
-  w = w ? w + " " : " ";
-  h = h ? h + " " : " ";
+  border = border ? border + " " : "border-b-2 rounded-sm border-gray-600 ";
+  dimensions = dimensions ? dimensions + " " : " ";
 
   return (
     <div className="relative flex">
@@ -144,15 +140,13 @@ export const Input = ({
         value={value}
         className={
           basis +
-          pl +
-          mr +
+          padding +
+          margin +
           textSize +
           bg +
-          px +
-          py +
-          w +
-          h +
-          "border-b-2 rounded-sm border-gray-600 outline-none text-black font-goth placeholder-gray-600 focus:border-primary duration-150"
+          border +
+          dimensions +
+          "outline-none text-black font-goth placeholder-gray-600 focus:border-primary duration-150"
         }
         type={type}
         placeholder={placeholder}

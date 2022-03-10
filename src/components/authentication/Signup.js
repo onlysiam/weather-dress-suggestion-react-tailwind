@@ -77,8 +77,7 @@ const Signup = () => {
             value={username}
             placeholder="Username"
             basis="basis-full"
-            pl="pl-0"
-            mr="mr-6"
+            margin="mr-6"
           />
           <Input
             onChange={passwordHandler}
@@ -86,7 +85,6 @@ const Signup = () => {
             type="text"
             placeholder="Password of 8 characters"
             basis="basis-full"
-            pl="pl-0"
           />
         </div>
       </div>
@@ -101,15 +99,13 @@ const Signup = () => {
             value={fname}
             placeholder="First Name"
             basis="basis-full"
-            pl="pl-0"
-            mr="mr-6"
+            margin="mr-6"
           />
           <Input
             onChange={lnameHandler}
             value={lname}
             placeholder="Last Name"
             basis="basis-full"
-            pl="pl-0"
           />
         </div>
         <div className="basis-full justify-center items-start mt-6">
@@ -119,7 +115,6 @@ const Signup = () => {
             type="text"
             placeholder="Enter a valid email address"
             basis="basis-full"
-            pl="pl-0"
           />
         </div>
       </div>
