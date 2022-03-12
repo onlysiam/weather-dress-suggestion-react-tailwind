@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 //image
 import bg from "../img/background pictures/authenticatin.svg";
 //Animations
@@ -16,6 +17,7 @@ import { loginWindowToggleFalse } from "../store/loaders/loginWindow";
 import { authReceived } from "../store/auth";
 const Authentication = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const authenticated = useSelector(
     (state) => state.entities.user.authenticated
   );
@@ -24,11 +26,24 @@ const Authentication = () => {
 
   useEffect(() => {
     if (authenticated) {
+      if (signupState) {
+        dispatch(
+          alertToggleTrue({
+            type: "success",
+            message: "Successfully Signed Up.",
+          })
+        );
+        navigate("/profile");
+      }
+      if (loginState)
+        dispatch(
+          alertToggleTrue({
+            type: "success",
+            message: "Successfully Logged In.",
+          })
+        );
       dispatch(loginWindowToggleFalse());
       dispatch(authWindowToggleFalse());
-      dispatch(
-        alertToggleTrue({ type: "success", message: "Successfully Logged In." })
-      );
       setTimeout(() => {
         dispatch(authReceived());
       }, 1000);
@@ -37,7 +52,7 @@ const Authentication = () => {
   return (
     <motion.div
       name="login"
-      className="absolute h-screen max-w-2xl top-0 right-0 flex flex-col items-center justify-center z-40"
+      className="absolute h-full w-full sm:max-w-2xl top-0 right-0 flex flex-col items-center justify-center z-40"
       variants={authPageAnimation}
       initial="hidden"
       animate="show"

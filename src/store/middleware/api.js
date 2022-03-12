@@ -32,10 +32,6 @@ const api =
           dispatch({ type: alertToggleTrue.type, payload: "success" });
         }
       }
-      if (onSuccess && !response.data) {
-        dispatch({ type: alertToggleTrue.type, payload: "error" });
-        dispatch({ type: onError, payload: "no user" });
-      }
     } catch (error) {
       dispatch(actions.apiCallFailed({ error }));
       if (onError) dispatch({ type: onError, payload: error });

@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import dpAlt from "../../img/profile props/profile picture placeholder.svg";
+//components
+import Loadingpulse from "../loaders/Loadingpulse";
 //function
 import { encodingImage } from "../../functions/functions";
 //redux
@@ -55,7 +57,7 @@ const Profilepicture = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-25p">
+    <div className="flex flex-col justify-start items-center w-full h-full sm:w-25p">
       <div
         onMouseLeave={() => setChangeBtn(false)}
         className="relative flex justify-center w-52 h-52 rounded-full overflow-hidden"
@@ -88,7 +90,9 @@ const Profilepicture = () => {
           ""
         )}
         {uploading ? (
-          <div className="absolute h-full w-full bg-gray-400 bg-opacity-70"></div>
+          <div class="absolute h-full w-full flex">
+            <Loadingpulse body="uploading..." />
+          </div>
         ) : (
           ""
         )}
@@ -99,7 +103,6 @@ const Profilepicture = () => {
           alt=""
         />
       </div>
-
       <h1 className="text-2xl font-bold mt-3">{userInfo.name}</h1>
     </div>
   );

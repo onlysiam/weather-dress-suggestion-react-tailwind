@@ -4,7 +4,7 @@ const Card = ({ type, image, bg }) => {
     <div
       className={
         bg +
-        "flex  basis-2/5 justify-center items-center gap-2 h-20 opacity-80 rounded-lg px-1"
+        "flex basis-2/5 justify-center items-center gap-2 h-20 opacity-80 rounded-lg px-1"
       }
     >
       <img className="h-16" src={image} alt="" />

@@ -1,8 +1,8 @@
 import { Button, Input } from "../formComponents/FormComponents";
 const Editinfo = ({ inputPlaceholder1, inputPlaceholder2 }) => {
   return (
-    <div className=" flex flex-col justify-center items-center w-full gap-3">
-      <div className="w-30p flex flex-col gap-3">
+    <div className=" flex flex-col justify-center items-center w-full gap-3 overflow-hidden">
+      <div className="w-30p flex flex-col gap-3 overflow-hidden">
         <Input
           dimensions="w-full"
           border="border rounded border-gray-400"
@@ -20,7 +20,7 @@ const Editinfo = ({ inputPlaceholder1, inputPlaceholder2 }) => {
           ""
         )}
       </div>
-      <div className="flex w-30p items-start gap-3">
+      <div className="flex w-30p items-start gap-3 overflow-hidden">
         <Button
           dimensions="w-20 h-8"
           padding="px-0 py-0"

@@ -10,13 +10,14 @@ import {
 } from "../../store/loaders/authWindow";
 import { signupWindowToggleFalse } from "../../store/loaders/signupWindow";
 import { loginWindowToggleTrue } from "../../store/loaders/loginWindow";
-const Element = ({ body, target, url }) => {
+const Element = ({ body, target, url, setNavMenuSlide }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
 
   //useEffect
   const navigateHandler = () => {
+    setNavMenuSlide(false);
     if (url) {
       dispatch(signupWindowToggleFalse());
       dispatch(loginWindowToggleTrue());
@@ -33,7 +34,7 @@ const Element = ({ body, target, url }) => {
   return (
     <Link
       onClick={navigateHandler}
-      className="linkNavNotActive flex justify-center items-center h-full cursor-pointer pt-2"
+      className="linkNavNotActive flex justify-center items-center h-10 md:h-full cursor-pointer pt-2"
       activeClass="active"
       to={target}
       spy={true}

@@ -1,29 +1,29 @@
 //images
 import aboutBg from "../../img/background pictures/person-bg.svg";
-import cloud from "../../img/landingpage/cloudwithrain.png";
-import api from "../../img/landingpage/api.png";
-import ml from "../../img/landingpage/ml.png";
-import shirt from "../../img/landingpage/shirt.png";
+import cloud from "../../img/about props/cloudwithrain.svg";
+import api from "../../img/about props/darkskyapi.svg";
+import ml from "../../img/about props/ml.svg";
+import shirt from "../../img/about props/shirt.svg";
 
-import pixabay from "../../img/landingpage/pixabay.svg";
-import openweather from "../../img/landingpage/openweather.svg";
-import cloudinary from "../../img/landingpage/cloudinary.svg";
+import pixabay from "../../img/about props/pixabay.svg";
+import openweather from "../../img/about props/openweather.svg";
+import cloudinary from "../../img/about props/cloudinary.svg";
 //components
 import Aboutdetails from "./Aboutdetails";
 const About = () => {
   return (
     <div
       id="about"
-      className="relative w-screen flex flex-col justify-between items-center px-60 py-20 bg-white"
+      className="relative w-screen flex flex-col justify-between items-center px-0 sm:px-60 py-20 bg-white"
     >
       <div className="z-10">
         <img className="absolute w-full top-0 left-0" src={aboutBg} alt="" />
       </div>
-      <div className="flex flex-row justify-between items-center h-full w-full">
-        <h1 className="font-ubuntu text-5xl text-primary font-extrabold overflow-hidden z-20">
+      <div className="flex flex-col sm:flex-row justify-between items-center h-full w-full">
+        <h1 className="font-ubuntu w-80p sm:w-50p text-4xl sm:text-5xl text-center sm:text-left text-primary font-extrabold overflow-hidden z-20">
           Dress For The Weather
         </h1>
-        <div className="flex flex-col justify-center w-3/4 items-start mt-20 z-20">
+        <div className="flex flex-col justify-center w-3/4 items-start mt-10 sm:mt-20 z-20">
           <Aboutdetails
             flex="justify-end"
             image={cloud}
@@ -48,8 +48,8 @@ const About = () => {
           />
         </div>
       </div>
-      <div className="flex flex-row justify-between items-center w-full">
-        <div className="flex flex-col justify-center w-3/4 items-start mt-24 z-20">
+      <div className="flex flex-col-reverse sm:flex-row mt-20 sm:mt-0 justify-between items-center w-full">
+        <div className="flex flex-col justify-center w-3/4 items-start mt-10 sm:mt-24 z-20">
           <Aboutdetails
             image={openweather}
             body="Weather Closet use openweather's geocoding API to pin point the exact search location. Also get the weather forecast upto 30 days. "
@@ -63,7 +63,7 @@ const About = () => {
             body="Organize your profile and store your outfits' picture in cloudinary with high resolution."
           />
         </div>
-        <h1 className="font-ubuntu text-5xl text-right text-primary font-extrabold overflow-hidden z-20">
+        <h1 className="font-ubuntu w-80p sm:w-50p text-4xl sm:text-5xl text-center sm:text-right text-primary font-extrabold overflow-hidden z-20">
           Place With The Weather
         </h1>
       </div>

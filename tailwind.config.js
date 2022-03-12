@@ -2,7 +2,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx,svg}"],
   theme: {
     screens: {
-      sm: "500px",
+      sm: "600px",
       // => @media (min-width: 640px) { ... }
 
       md: "768px",
@@ -19,6 +19,8 @@ module.exports = {
     },
     extend: {
       spacing: {
+        "90vh": "90.5vh",
+        "105vh": "106vh",
         mbottom: "100%",
         "65%": "29rem",
         100: "35rem",
@@ -39,6 +41,9 @@ module.exports = {
         "75p": "75%",
         "80p": "80%",
         "85p": "85%",
+        "90p": "90%",
+        "95p": "95%",
+        "150p": "150%",
       },
       zIndex: {
         100: "100",

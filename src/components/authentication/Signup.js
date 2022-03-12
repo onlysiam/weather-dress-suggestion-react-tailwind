@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 //Animations
@@ -7,22 +7,41 @@ import { loginSignupPageAnimation } from "../Animation";
 //components
 import { Button, Input } from "../formComponents/FormComponents";
 //redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //reducers
 import { alertToggleTrue } from "../../store/alerts/alert";
 import { loginWindowToggle } from "../../store/loaders/loginWindow";
 import { signupWindowToggle } from "../../store/loaders/signupWindow";
-import { register } from "../../store/auth";
-import { uploadPicture } from "../../store/user";
+import {
+  register,
+  checkUsername,
+  userAvailabilityReset,
+} from "../../store/auth";
 
 const Signup = () => {
   const dispatch = useDispatch();
-  const [fname, setFname] = useState();
-  const [lname, setLname] = useState();
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
-  const [email, setEmail] = useState();
+  const usernameAvailability = useSelector(
+    (state) => state.entities.userAuthentication.usernameAvailability
+  );
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
+  //useEffect
+  useEffect(() => {
+    console.log(usernameAvailability);
+    if (username && !usernameAvailability) {
+      dispatch(
+        alertToggleTrue({
+          type: "error",
+          message: "Username Not Available.",
+        })
+      );
+      dispatch(userAvailabilityReset());
+    }
+  }, [usernameAvailability]);
   //handlers
   const fnameHandler = (e) => {
     setFname(e.target.value);
@@ -33,6 +52,11 @@ const Signup = () => {
   const usernameHandler = (e) => {
     setUsername(e.target.value);
   };
+  const checkUsernameHandler = () => {
+    if (username) {
+      dispatch(checkUsername(username));
+    }
+  };
   const passwordHandler = (e) => {
     setPassword(e.target.value);
   };
@@ -41,15 +65,14 @@ const Signup = () => {
   };
   const signupHandler = (e) => {
     e.preventDefault();
-
-    dispatch(register({ fname, lname, username, password, email }));
-
-    // dispatch(
-    //   alertToggleTrue({
-    //     type: "success",
-    //     message: "Account Created Successfully.",
-    //   })
-    // );
+    if (!usernameAvailability)
+      dispatch(
+        alertToggleTrue({
+          type: "error",
+          message: "Username Not Available. Please Change",
+        })
+      );
+    else dispatch(register({ fname, lname, username, password, email }));
   };
   const loginWindowHandler = () => {
     dispatch(loginWindowToggle());
@@ -57,7 +80,7 @@ const Signup = () => {
   };
   return (
     <motion.form
-      className="flex w-3/5 h-100 flex-wrap items-center bg-white bg-opacity-30 justify-around backdrop-blur-md shadow-2xl rounded-md px-14 py-10 z-40"
+      className="flex w-95p sm:w-3/5 h-100 flex-wrap items-center bg-white bg-opacity-30 justify-around backdrop-blur-md shadow-2xl rounded-md px-14 py-10 z-40"
       action=""
       variants={loginSignupPageAnimation}
       initial="hidden"
@@ -73,6 +96,7 @@ const Signup = () => {
         </h1>
         <div className="flex basis-full justify-center items-start">
           <Input
+            onBlur={checkUsernameHandler}
             onChange={usernameHandler}
             value={username}
             placeholder="Username"
@@ -82,7 +106,7 @@ const Signup = () => {
           <Input
             onChange={passwordHandler}
             value={password}
-            type="text"
+            type="password"
             placeholder="Password of 8 characters"
             basis="basis-full"
           />

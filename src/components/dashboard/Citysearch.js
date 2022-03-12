@@ -105,7 +105,7 @@ const Citysearch = () => {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="relative flex flex-col justify-center items-start w-screen h-screen px-60"
+      className="relative flex flex-col justify-center items-center sm:items-start w-screen h-screen px-0 sm:px-60"
     >
       <div className="">
         <img
@@ -114,7 +114,7 @@ const Citysearch = () => {
           alt=""
         />
       </div>
-      <div className="flex flex-col justify-evenly items-start w-2/3">
+      <div className="flex flex-col justify-evenly items-start w-90p sm:w-2/3">
         <h1 className="text-white text-5xl font-extrabold font-ubuntu overflow-hidden z-20">
           Where Are You Headed Today?
         </h1>

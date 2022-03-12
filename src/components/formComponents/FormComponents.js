@@ -116,6 +116,7 @@ export const Input = ({
   image,
   basis,
   border,
+  onBlur,
   onChange,
   textSize,
   margin,
@@ -136,6 +137,7 @@ export const Input = ({
     <div className="relative flex">
       {image ? <img className="absolute h-5 left-0" src={image} alt="" /> : ""}
       <input
+        onBlur={() => (onBlur ? onBlur() : "")}
         onChange={(e) => onChange(e)}
         value={value}
         className={

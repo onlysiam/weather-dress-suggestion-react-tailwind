@@ -1,9 +1,9 @@
 const Socials = () => {
   return (
-    <div className="flex justify-center items-center gap-8 pb-6 border-b border-gray-400">
-      <div className="flex justify-center items-center gap-3">
+    <div className="flex justify-center items-center gap-3 lg:gap-8 pb-6 border-b border-gray-400">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-3">
         <svg
-          className="h-10 fill-primary cursor-pointer hover:fill-secondary duration-700"
+          className="h-8 lg:h-10 fill-primary cursor-pointer hover:fill-secondary duration-700"
           onClick={() => {
             window.open("https://www.linkedin.com/in/onlysiam/");
           }}
@@ -16,7 +16,7 @@ const Socials = () => {
         </svg>
 
         <p
-          className="text-white text-md font-medium cursor-pointer hover:text-secondary duration-700"
+          className="text-white text-sm lg:text-base font-medium cursor-pointer hover:text-secondary duration-700"
           onClick={() => {
             window.open("https://www.linkedin.com/in/onlysiam/");
           }}
@@ -24,9 +24,9 @@ const Socials = () => {
           in/siamahmed
         </p>
       </div>
-      <div className="flex justify-center items-center gap-3">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-3">
         <svg
-          className="h-10 fill-primary cursor-pointer hover:fill-secondary duration-700"
+          className="h-8 lg:h-10 fill-primary cursor-pointer hover:fill-secondary duration-700"
           fill="none"
           onClick={() => {
             window.open("https://github.com/onlysiam");
@@ -43,7 +43,7 @@ const Socials = () => {
           />
         </svg>
         <p
-          className="text-white text-md font-medium cursor-pointer hover:text-secondary duration-700"
+          className="text-white text-sm lg:text-base font-medium cursor-pointer hover:text-secondary duration-700"
           onClick={() => {
             window.open("https://github.com/onlysiam");
           }}
@@ -51,9 +51,9 @@ const Socials = () => {
           github/onlysiam
         </p>
       </div>
-      <div className="flex justify-center items-center gap-3">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-3 lg:gap-1">
         <svg
-          className="h-10 fill-primary cursor-pointer hover:fill-secondary duration-700"
+          className="h-8 lg:h-10 fill-primary cursor-pointer hover:fill-secondary duration-700"
           onClick={() => {
             window.open(
               "https://mail.google.com/mail/u/0/#inbox?compose=CllgCHrgmQMpVPqxlSmGZpbZPqTNXLsSfgMzhNLCNZgdsnbqJtNKbBZvfNWxcJPljDWWJWQGGVV"
@@ -82,7 +82,7 @@ const Socials = () => {
         </svg>
 
         <p
-          className="text-white text-md font-medium cursor-pointer hover:text-secondary duration-700"
+          className="text-white text-sm lg:text-base font-medium cursor-pointer hover:text-secondary duration-700"
           onClick={() => {
             window.open(
               "https://mail.google.com/mail/u/0/#inbox?compose=CllgCHrgmQMpVPqxlSmGZpbZPqTNXLsSfgMzhNLCNZgdsnbqJtNKbBZvfNWxcJPljDWWJWQGGVV"

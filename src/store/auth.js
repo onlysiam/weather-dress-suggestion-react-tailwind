@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
-import { authUrl, registerUrl } from "./urls";
+import { loginUrl, registerUrl, checkUserUrl } from "./urls";
 import { userAdded } from "./user";
 import { preloaderToggleFalse } from "./loaders/preloader";
 
@@ -8,6 +8,7 @@ const slice = createSlice({
   name: "authentication",
   initialState: {
     list: [],
+    usernameAvailability: "",
     loading: false,
     lastFetch: null,
     alert: [{ type: "" }, { state: false }],
@@ -33,6 +34,13 @@ const slice = createSlice({
         (course) => course.course_id !== action.payload
       );
     },
+
+    userAvailability: (authentication, action) => {
+      authentication.usernameAvailability = !action.payload.status;
+    },
+    userAvailabilityReset: (authentication, action) => {
+      authentication.usernameAvailability = "";
+    },
     logout: (authentication, action) => {
       const index = authentication.list.findIndex(
         (course) => course.course_id === action.payload
@@ -43,18 +51,30 @@ const slice = createSlice({
   },
 });
 
-export const { authRequested, authRequestFailed, authReceived } = slice.actions;
+export const {
+  authRequested,
+  authRequestFailed,
+  authReceived,
+  userAvailability,
+  userAvailabilityReset,
+} = slice.actions;
 export default slice.reducer;
 
 //Action Creator
 
 export const login = (username, password) =>
   apiCallBegan({
-    url: authUrl + "/" + username + "/" + password,
+    url: loginUrl + "/" + username + "/" + password,
     method: "get",
     onStart: authRequested.type,
     onSuccess: userAdded.type,
     onError: preloaderToggleFalse.type,
+  });
+export const checkUsername = (username) =>
+  apiCallBegan({
+    url: checkUserUrl + "/" + username,
+    method: "get",
+    onSuccess: userAvailability.type,
   });
 
 export const register = (informations) =>

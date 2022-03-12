@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 //animation
@@ -58,18 +58,17 @@ const Profile = () => {
       exit="exit"
       className="flex justify-center h-screen w-screen items-center"
     >
-      <div className="flex justify-center items-start h-80p w-85p gap-20 bg-white rounded-lg py-10 mt-4">
+      <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start h-85p sm:h-80p w-95p sm:w-85p gap-20 bg-white rounded-lg py-10 mt-4">
         <Profilepicture />
 
         <div className="flex flex-col justify-start items-start w-75p h-full">
           <div className="flex justify-start items-center border-b border-black w-85p h-20 px-2">
             <h1 className="text-5xl font">Profile</h1>
           </div>
-          {/* <div className="border-b border-gray-700 border-opacity-20 w-85p h-20 px-2"> */}
           <div
             className={
               (infoWindows.name ? "h-35p py-2 bg-gray-100 " : "h-20 ") +
-              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2"
+              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2 duration-300"
             }
           >
             <Infocard
@@ -91,7 +90,7 @@ const Profile = () => {
           <div
             className={
               (infoWindows.username ? "h-35p py-2 bg-gray-100 " : "h-20 ") +
-              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2"
+              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2 duration-300"
             }
           >
             <Infocard
@@ -110,7 +109,7 @@ const Profile = () => {
           <div
             className={
               (infoWindows.password ? "h-35p py-2 bg-gray-100 " : "h-20 ") +
-              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2"
+              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2 duration-300"
             }
           >
             <Infocard
@@ -132,7 +131,7 @@ const Profile = () => {
           <div
             className={
               (infoWindows.email ? "h-35p py-2 bg-gray-100 " : "h-20 ") +
-              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2"
+              "flex flex-col justify-evenly items-center border-b border-gray-700 border-opacity-20 w-85p h-20 px-2 duration-300"
             }
           >
             <Infocard

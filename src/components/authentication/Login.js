@@ -18,8 +18,8 @@ import { login } from "../../store/auth";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("siam");
+  const [password, setPassword] = useState("siam");
 
   //handlers
   const usernameInputHandler = (e) => {
@@ -39,7 +39,7 @@ const Login = () => {
   };
   return (
     <motion.form
-      className="flex w-3/5 h-65% flex-wrap items-center bg-white bg-opacity-30 justify-around backdrop-blur-md shadow-2xl rounded-md px-14 py-14 z-40"
+      className="flex w-90p sm:w-3/5 h-65% flex-wrap items-center bg-white bg-opacity-30 justify-around backdrop-blur-md shadow-2xl rounded-md px-14 py-14 z-40"
       variants={loginSignupPageAnimation}
       initial="hidden"
       animate="show"
